@@ -8,60 +8,167 @@
     body {
         font-family: Arial, sans-serif;
         margin: 20px auto;
-        max-width: 800px;
-        text-align: center; 
+        max-width: 900px;
+        text-align: center;
     }
     h1, h2 {
         color: #003366;
     }
+
     .grupo {
         background: #f2f2f2;
         padding: 15px;
         border-radius: 8px;
-        margin: 0 auto 20px auto; 
+        margin: 0 auto 20px auto;
         border-left: 5px solid #003366;
-        max-width: 600px;
+        max-width: 700px;
+        text-align: left;
     }
     .opc {
         border-left: 5px solid #888;
     }
-    label {
-        display: block;
-        text-align: left;
-        margin: 5px auto;
-        max-width: 500px;
+
+    .item {
+        display: flex;
+        align-items: center;
+        margin: 8px 0;
+        padding: 6px;
+    }
+
+    .btn-mini {
+        width: 18px;
+        height: 18px;
+        border: 2px solid #444;
+        margin-right: 10px;
+        cursor: pointer;
+        border-radius: 3px;
+        display: inline-block;
+    }
+
+    .btn-highlight {
+        margin-left: auto;
+        border-color: #d4a200;
+    }
+
+    .texto {
+        flex: 1;
         cursor: pointer;
     }
+
+    .riscado {
+        text-decoration: line-through;
+        color: #555;
+    }
+
+    .marcado {
+        background: yellow;
+    }
 </style>
+
+<script>
+    function toggleRiscar(id) {
+        const elemento = document.getElementById(id);
+        elemento.classList.toggle("riscado");
+    }
+
+    function toggleMarcaTexto(id) {
+        const elemento = document.getElementById(id);
+        elemento.classList.toggle("marcado");
+    }
+</script>
 
 </head>
 <body>
 
 <h1>Checklist – Cadastro de Possuidor (IPTU)</h1>
 
-<!-- ------------------ OBRIGATÓRIOS ------------------ -->
+<!-- OBRIGATÓRIOS -->
 <div class="grupo">
     <h2>Documentos Obrigatórios</h2>
 
-    <label><input type="checkbox"> Requerimento padrão devidamente preenchido</label>
-    <label><input type="checkbox"> Cópia simples do RG e CPF do requerente</label>
-    <label><input type="checkbox"> Cópia simples do contrato social / estatuto (se pessoa jurídica)</label>
-    <label><input type="checkbox"> Procuração original com firma reconhecida + RG/CPF do procurador (se aplicável)</label>
-    <label><input type="checkbox"> Declaração de posse assinada por 3 vizinhos com firma reconhecida</label>
-    <label><input type="checkbox"> Cópia simples dos comprovantes de residência dos vizinhos que assinaram</label>
-    <label><input type="checkbox"> Contas de consumo (água/luz/telefone) em nome do requerente dos últimos 5 anos</label>
-    <label><input type="checkbox"> Cópia simples de contratos de compra e venda (se houver)</label>
-    <label><input type="checkbox"> Comprovante de pagamento da taxa de expediente</label>
+    <div class="item">
+        <span class="btn-mini" onclick="toggleRiscar('t1')"></span>
+        <span id="t1" class="texto">Requerimento padrão devidamente preenchido</span>
+        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t1')"></span>
+    </div>
+
+    <div class="item">
+        <span class="btn-mini" onclick="toggleRiscar('t2')"></span>
+        <span id="t2" class="texto">Cópia simples do RG e CPF do requerente</span>
+        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t2')"></span>
+    </div>
+
+    <div class="item">
+        <span class="btn-mini" onclick="toggleRiscar('t3')"></span>
+        <span id="t3" class="texto">Cópia simples do contrato social / estatuto (se pessoa jurídica)</span>
+        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t3')"></span>
+    </div>
+
+    <div class="item">
+        <span class="btn-mini" onclick="toggleRiscar('t4')"></span>
+        <span id="t4" class="texto">Procuração original com firma reconhecida + RG/CPF do procurador (se aplicável)</span>
+        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t4')"></span>
+    </div>
+
+    <div class="item">
+        <span class="btn-mini" onclick="toggleRiscar('t5')"></span>
+        <span id="t5" class="texto">Declaração de posse assinada por 3 vizinhos com firma reconhecida</span>
+        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t5')"></span>
+    </div>
+
+    <div class="item">
+        <span class="btn-mini" onclick="toggleRiscar('t6')"></span>
+        <span id="t6" class="texto">Comprovantes de residência dos vizinhos que assinaram</span>
+        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t6')"></span>
+    </div>
+
+    <div class="item">
+        <span class="btn-mini" onclick="toggleRiscar('t7')"></span>
+        <span id="t7" class="texto">Contas de consumo dos últimos 5 anos em nome do requerente</span>
+        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t7')"></span>
+    </div>
+
+    <div class="item">
+        <span class="btn-mini" onclick="toggleRiscar('t8')"></span>
+        <span id="t8" class="texto">Contratos de compra e venda (se houver)</span>
+        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t8')"></span>
+    </div>
+
+    <div class="item">
+        <span class="btn-mini" onclick="toggleRiscar('t9')"></span>
+        <span id="t9" class="texto">Comprovante da taxa de expediente</span>
+        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t9')"></span>
+    </div>
 </div>
 
-<!-- ------------------ OPCIONAIS ------------------ -->
+<!-- OPCIONAIS -->
 <div class="grupo opc">
-    <h2>Documentos Opcionais (Complementares)</h2>
+    <h2>Documentos Opcionais</h2>
 
-    <label><input type="checkbox"> Croqui de localização ou mapa do imóvel</label>
-    <label><input type="checkbox"> Fotos atualizadas do imóvel</label>
-    <label><input type="checkbox"> Declaração de que o requerente não é locatário (não é inquilino)</label>
-    <label><input type="checkbox"> Matrícula atualizada do imóvel (se possuir)</label>
+    <div class="item">
+        <span class="btn-mini" onclick="toggleRiscar('t10')"></span>
+        <span id="t10" class="texto">Croqui ou mapa de localização</span>
+        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t10')"></span>
+    </div>
+
+    <div class="item">
+        <span class="btn-mini" onclick="toggleRiscar('t11')"></span>
+        <span id="t11" class="texto">Fotos atualizadas do imóvel</span>
+        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t11')"></span>
+    </div>
+
+    <div class="item">
+        <span class="btn-mini" onclick="toggleRiscar('t12')"></span>
+        <span id="t12" class="texto">Declaração de que não é locatário</span>
+        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t12')"></span>
+    </div>
+
+    <div class="item">
+        <span class="btn-mini" onclick="toggleRiscar('t13')"></span>
+        <span id="t13" class="texto">Matrícula atualizada (se possuir)</span>
+        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t13')"></span>
+    </div>
+
 </div>
 
 </body>
