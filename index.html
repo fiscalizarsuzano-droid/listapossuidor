@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Checklist – Cadastro de Possuidor (IPTU)</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        max-width: 800px;
+    }
+    h2 {
+        color: #003366;
+    }
+    .grupo {
+        background: #f2f2f2;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border-left: 5px solid #003366;
+    }
+    .opc {
+        border-left: 5px solid #888;
+    }
+    label {
+        display: block;
+        padding: 5px 0;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>Checklist – Cadastro de Possuidor (IPTU)</h1>
+
+<!-- --------------------- OBRIGATÓRIOS ------------------------- -->
+<div class="grupo">
+    <h2>Documentos Obrigatórios</h2>
+
+    <label><input type="checkbox"> Requerimento padrão devidamente preenchido</label>
+    <label><input type="checkbox"> Cópia simples do RG e CPF do requerente</label>
+    <label><input type="checkbox"> Cópia simples do contrato social / estatuto (se pessoa jurídica)</label>
+    <label><input type="checkbox"> Procuração original com firma reconhecida + RG/CPF do procurador (se aplicável)</label>
+    <label><input type="checkbox"> Declaração de posse assinada por 3 vizinhos com firma reconhecida</label>
+    <label><input type="checkbox"> Cópia simples dos comprovantes de residência dos vizinhos que assinaram</label>
+    <label><input type="checkbox"> Contas de consumo (água/luz/telefone) em nome do requerente dos últimos 5 anos</label>
+    <label><input type="checkbox"> Cópia simples de contratos de compra e venda (se houver)</label>
+    <label><input type="checkbox"> Comprovante de pagamento da taxa de expediente</label>
+</div>
+
+<!-- --------------------- OPCIONAIS ------------------------- -->
+<div class="grupo opc">
+    <h2>Documentos Opcionais (Complementares)</h2>
+
+    <label><input type="checkbox"> Croqui de localização ou mapa do imóvel</label>
+    <label><input type="checkbox"> Fotos atualizadas do imóvel</label>
+    <label><input type="checkbox"> Declaração de que o requerente não é locatário (não é inquilino)</label>
+    <label><input type="checkbox"> Matrícula atualizada do imóvel (se possuir)</label>
+</div>
+
+</body>
+</html>
