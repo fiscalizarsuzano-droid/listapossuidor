@@ -2,172 +2,290 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Checklist – Procedimentos Cadastro Imobiliário</title>
+<title>Checklist – Cadastro Imobiliário</title>
 
 <style>
+    :root{
+        --nav:#0a3a50;
+        --nav-accent:#5bd4ff;
+        --card-border:#0077a8;
+        --bg:#e8f3f8;
+        --text:#003b5c;
+    }
+    *{box-sizing:border-box}
     body {
-        font-family: Arial, sans-serif;
+        font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
         margin: 0;
-        background: #e8f3f8;
-    }
-
-    /* ---- ABAS ---- */
-    .tabs {
         display: flex;
-        background: #0a3a50;
-        padding: 10px;
-        gap: 10px;
-        flex-wrap: wrap;
+        height: 100vh;
+        background: var(--bg);
+        color: #123;
     }
 
-    .tab {
-        padding: 10px 18px;
-        background: #146586;
-        color: white;
-        border-radius: 8px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: 0.2s;
-    }
-
-    .tab:hover {
-        background: #1b81a6;
-    }
-
-    .tab.active {
-        background: #21a1c9;
-    }
-
-    /* ---- ÁREA DO CHECKLIST ---- */
-    .conteudo {
-        display: none;
-        padding: 25px;
-        max-width: 900px;
-        margin: 0 auto;
-    }
-
-    .conteudo.active {
-        display: block;
-    }
-
-    /* ---- GRUPOS ---- */
-    h2 {
-        color: #003b5c;
-    }
-
-    .grupo {
-        background: #ffffff;
-        padding: 15px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        border-left: 6px solid #0077a8;
-    }
-
-    .opc {
-        border-left: 6px solid #888;
-    }
-
-    .item {
+    /* MENU LATERAL */
+    .menu {
+        width: 300px;
+        background: linear-gradient(180deg,var(--nav), #134e63);
+        padding: 18px 12px;
         display: flex;
-        align-items: center;
-        margin: 8px 0;
-        padding: 6px;
+        flex-direction: column;
+        gap: 6px;
+        border-right: 1px solid rgba(255,255,255,0.06);
     }
 
-    .btn-mini {
-        width: 18px;
-        height: 18px;
-        border: 2px solid #444;
-        margin-right: 10px;
+    .menu-title {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        padding: 10px 8px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        margin-bottom: 6px;
+        text-align: center;
+        letter-spacing: 0.4px;
+    }
+
+    .aba {
+        padding: 12px 14px;
+        color: #fff;
         cursor: pointer;
-        border-radius: 3px;
-        display: inline-block;
+        font-size: 14px;
+        transition: background .15s, transform .08s;
+        border-left: 4px solid transparent;
+        border-radius: 6px;
+        display:flex;
+        align-items:center;
+        gap:8px;
     }
 
-    .btn-highlight {
-        margin-left: auto;
-        border-color: #d4a200;
-        cursor: pointer;
-    }
+    .aba:hover { background: rgba(255,255,255,0.04); transform: translateX(2px); }
 
-    .riscado {
-        text-decoration: line-through;
-        color: #888;
-    }
+    .aba.active { background: rgba(255,255,255,0.06); border-left: 4px solid var(--nav-accent); }
 
-    .marcado {
-        background: yellow;
-    }
+    .aba .tag { font-size:11px; background: rgba(0,0,0,0.12); padding:4px 8px; border-radius:999px; }
 
-    .texto {
+    /* CONTEÚDO */
+    .area {
         flex: 1;
+        padding: 26px;
+        overflow-y: auto;
+    }
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+    h1 { color: var(--text); margin:0; font-size:20px }
+    .sub { color: #456; font-size:13px }
+
+    .reset-btn {
+        padding: 10px 14px;
+        background: #d14949;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 13px;
         cursor: pointer;
+    }
+
+    /* CARTÕES */
+    .card { background: #fff; padding: 14px; border-radius: 10px; margin-bottom: 16px; box-shadow: 0 1px 0 rgba(0,0,0,0.03); border-left:6px solid var(--card-border) }
+    .card.opc { border-left-color: #8a8a8a }
+
+    .item { display:flex; align-items:center; gap:10px; padding:8px 6px }
+    .label { flex:1; user-select:none }
+
+    /* controles à esquerda/direita */
+    .ctrl-left, .ctrl-right { width:22px; height:22px; border-radius:6px; display:inline-flex; align-items:center; justify-content:center; cursor:pointer; font-weight:700 }
+    .ctrl-left { background:#ddf3fb; border:2px solid #1c86a5; color:#0a3a50 }
+    .ctrl-right { background:#fbecec; border:2px solid #cc0000; color:#6b0000 }
+
+    .marcado { background: #fff59a; }
+    .riscado { text-decoration: line-through; color:#777 }
+
+    /* notas */
+    .nota{font-size:13px;color:#556;margin-top:8px}
+
+    /* responsivo */
+    @media (max-width:900px){
+        .menu{display:none}
+        body{flex-direction:column}
+        .area{padding:16px}
     }
 </style>
 
 <script>
-    function abrirAba(nome) {
-        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-        document.querySelectorAll(".conteudo").forEach(c => c.classList.remove("active"));
-
-        document.getElementById("tab-" + nome).classList.add("active");
-        document.getElementById("conteudo-" + nome).classList.add("active");
+    // Abas e controle
+    function abrirAba(nome){
+        document.querySelectorAll('.aba').forEach(a=>a.classList.remove('active'));
+        document.querySelector('#aba-'+nome).classList.add('active');
+        document.querySelectorAll('.conteudo').forEach(c=>c.style.display='none');
+        document.querySelector('#conteudo-'+nome).style.display='block';
+        // scroll top
+        document.querySelector('.area').scrollTop = 0;
     }
 
-    function toggleRiscar(id) {
-        document.getElementById(id).classList.toggle("riscado");
+    function marcarTexto(id){
+        const el = document.getElementById(id);
+        if(el.classList.contains('marcado')) el.classList.remove('marcado'); else el.classList.add('marcado');
+    }
+    function riscarTexto(id){
+        const el = document.getElementById(id);
+        if(el.classList.contains('riscado')) el.classList.remove('riscado'); else el.classList.add('riscado');
+    }
+    function resetarChecklist(){
+        document.querySelectorAll('.marcado').forEach(e=>e.classList.remove('marcado'));
+        document.querySelectorAll('.riscado').forEach(e=>e.classList.remove('riscado'));
     }
 
-    function toggleMarcaTexto(id) {
-        document.getElementById(id).classList.toggle("marcado");
-    }
+    // ao carregar, mostrar primeira aba
+    document.addEventListener('DOMContentLoaded', ()=>{ abrirAba('compromissario'); });
 </script>
-
 </head>
 <body>
 
-<!-- ================== ABAS ================== -->
-<div class="tabs">
-    <div id="tab-compromissario" class="tab active" onclick="abrirAba('compromissario')">Alteração de Compromissário</div>
-    <div id="tab-proprietario" class="tab" onclick="abrirAba('proprietario')">Alteração de Proprietário</div>
-    <div id="tab-revisao" class="tab" onclick="abrirAba('revisao')">Revisão de Área</div>
-    <div id="tab-subunidades" class="tab" onclick="abrirAba('subunidades')">Subunidades</div>
-    <div id="tab-desdobro" class="tab" onclick="abrirAba('desdobro')">Desdobro/Fusão</div>
-    <div id="tab-certidoes" class="tab" onclick="abrirAba('certidoes')">Certidões</div>
-    <div id="tab-condominio" class="tab" onclick="abrirAba('condominio')">Individualização de Condomínio</div>
-    <div id="tab-cadastramento" class="tab" onclick="abrirAba('cadastramento')">Cadastramento de Área</div>
+<div class="menu" role="navigation" aria-label="Procedimentos">
+    <div class="menu-title">PROCEDIMENTOS</div>
+    <div id="aba-compromissario" class="aba" onclick="abrirAba('compromissario')"><span>Alteração de Compromissário</span><span class="tag">#AC</span></div>
+    <div id="aba-proprietario" class="aba" onclick="abrirAba('proprietario')"><span>Alteração de Proprietário</span><span class="tag">#AP</span></div>
+    <div id="aba-revisao" class="aba" onclick="abrirAba('revisao')"><span>Revisão de Área</span><span class="tag">#RA</span></div>
+    <div id="aba-subunidades" class="aba" onclick="abrirAba('subunidades')"><span>Lançamento/Exclusão Subunidades</span><span class="tag">#LS</span></div>
+    <div id="aba-desdobro" class="aba" onclick="abrirAba('desdobro')"><span>Desdobro / Fusão</span><span class="tag">#DF</span></div>
+    <div id="aba-certidoes" class="aba" onclick="abrirAba('certidoes')"><span>Certidões</span><span class="tag">#CE</span></div>
+    <div id="aba-condominio" class="aba" onclick="abrirAba('condominio')"><span>Individualização Condomínio</span><span class="tag">#IC</span></div>
+    <div id="aba-cadastramento" class="aba" onclick="abrirAba('cadastramento')"><span>Cadastramento de Área</span><span class="tag">#CA</span></div>
+    <div id="aba-possuidor" class="aba" onclick="abrirAba('possuidor')"><span>Cadastro de Possuidor</span><span class="tag">#CP</span></div>
 </div>
 
-<!-- ================== ABA: COMPROMISSÁRIO ================== -->
-<div id="conteudo-compromissario" class="conteudo active">
-    <h1>Alteração de Compromissário</h1>
+<div class="area">
+    <header>
+        <div>
+            <h1>Checklist — Cadastro Imobiliário</h1>
+            <div class="sub">Clique no quadrado à esquerda para marcar como entregue (destacar). Clique à direita para riscar e indicar falta.</div>
+        </div>
+        <div>
+            <button class="reset-btn" onclick="resetarChecklist()">Reiniciar Checklist</button>
+        </div>
+    </header>
 
-    <div class="grupo">
-        <h2>Documentos</h2>
-        <div class="item"><span class="btn-mini" onclick="toggleRiscar('c1')"></span><span id="c1" class="texto">Espelho de IPTU</span><span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('c1')"></span></div>
-        <div class="item"><span class="btn-mini" onclick="toggleRiscar('c2')"></span><span id="c2" class="texto">RG e CPF</span><span class="btn-mini btn-highlight"></span></div>
-        <div class="item"><span class="btn-mini" onclick="toggleRiscar('c3')"></span><span id="c3" class="texto">Comprovante de Endereço</span><span class="btn-mini btn-highlight"></span></div>
-        <div class="item"><span class="btn-mini" onclick="toggleRiscar('c4')"></span><span id="c4" class="texto">Documentos conforme nome do IPTU (matrícula, contrato etc.)</span><span class="btn-mini btn-highlight"></span></div>
-    </div>
+    <!-- COMPROMISSÁRIO -->
+    <section id="conteudo-compromissario" class="conteudo" style="display:none">
+        <h2 style="color:var(--text)">Alteração de Compromissário</h2>
+        <div class="card">
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('c1')">✓</div><div id="c1" class="label">Espelho de IPTU</div><div class="ctrl-right" onclick="riscarTexto('c1')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('c2')">✓</div><div id="c2" class="label">Documentos Pessoais (RG e CPF)</div><div class="ctrl-right" onclick="riscarTexto('c2')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('c3')">✓</div><div id="c3" class="label">Comprovante de Endereço</div><div class="ctrl-right" onclick="riscarTexto('c3')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('c4')">✓</div><div id="c4" class="label">Sequência de documentos a partir do nome que consta no IPTU (matrícula, contrato etc.)</div><div class="ctrl-right" onclick="riscarTexto('c4')">✕</div></div>
+        </div>
+    </section>
+
+    <!-- PROPRIETÁRIO -->
+    <section id="conteudo-proprietario" class="conteudo" style="display:none">
+        <h2 style="color:var(--text)">Alteração de Proprietário</h2>
+        <div class="card">
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('p1')">✓</div><div id="p1" class="label">Apresentar a Matrícula Atualizada</div><div class="ctrl-right" onclick="riscarTexto('p1')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('p2')">✓</div><div id="p2" class="label">Revisão de Área / Descrição da Solicitação / Requerimento</div><div class="ctrl-right" onclick="riscarTexto('p2')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('p3')">✓</div><div id="p3" class="label">Espelho de IPTU</div><div class="ctrl-right" onclick="riscarTexto('p3')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('p4')">✓</div><div id="p4" class="label">Documentos Pessoais (RG e CPF)</div><div class="ctrl-right" onclick="riscarTexto('p4')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('p5')">✓</div><div id="p5" class="label">Comprovante de Endereço</div><div class="ctrl-right" onclick="riscarTexto('p5')">✕</div></div>
+            <div class="nota">Em caso do nome do requerente não constar no IPTU: apresentar a sequência de documentos a partir do nome que consta no IPTU.</div>
+        </div>
+    </section>
+
+    <!-- REVISÃO DE ÁREA -->
+    <section id="conteudo-revisao" class="conteudo" style="display:none">
+        <h2 style="color:var(--text)">Revisão de Área</h2>
+        <div class="card">
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('r1')">✓</div><div id="r1" class="label">Cópias: Descrição da Solicitação / Requerimento</div><div class="ctrl-right" onclick="riscarTexto('r1')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('r2')">✓</div><div id="r2" class="label">Espelho de IPTU</div><div class="ctrl-right" onclick="riscarTexto('r2')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('r3')">✓</div><div id="r3" class="label">Documentos Pessoais (RG e CPF)</div><div class="ctrl-right" onclick="riscarTexto('r3')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('r4')">✓</div><div id="r4" class="label">Comprovante de Endereço</div><div class="ctrl-right" onclick="riscarTexto('r4')">✕</div></div>
+            <div class="nota">Observação: seguir a mesma regra - se o nome do requerente não consta no IPTU, apresentar sequência documental do titular.</div>
+        </div>
+    </section>
+
+    <!-- SUBUNIDADES -->
+    <section id="conteudo-subunidades" class="conteudo" style="display:none">
+        <h2 style="color:var(--text)">Lançamento / Exclusão de Subunidades</h2>
+        <div class="card">
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('s1')">✓</div><div id="s1" class="label">Cópias: Descrição da Solicitação / Requerimento</div><div class="ctrl-right" onclick="riscarTexto('s1')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('s2')">✓</div><div id="s2" class="label">Espelho de IPTU</div><div class="ctrl-right" onclick="riscarTexto('s2')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('s3')">✓</div><div id="s3" class="label">Documentos Pessoais (RG e CPF)</div><div class="ctrl-right" onclick="riscarTexto('s3')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('s4')">✓</div><div id="s4" class="label">Comprovante de Endereço</div><div class="ctrl-right" onclick="riscarTexto('s4')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('s5')">✓</div><div id="s5" class="label">Certidão Negativa de Débitos Imobiliários</div><div class="ctrl-right" onclick="riscarTexto('s5')">✕</div></div>
+            <div class="nota">Em caso do nome do requerente não constar no IPTU: apresentar sequência de documentos a partir do nome que consta no IPTU.</div>
+        </div>
+    </section>
+
+    <!-- DESDOBRO / FUSÃO -->
+    <section id="conteudo-desdobro" class="conteudo" style="display:none">
+        <h2 style="color:var(--text)">Desdobro / Fusão</h2>
+        <div class="card">
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('d1')">✓</div><div id="d1" class="label">Cópias: Descrição da Solicitação / Requerimento</div><div class="ctrl-right" onclick="riscarTexto('d1')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('d2')">✓</div><div id="d2" class="label">Espelho de IPTU</div><div class="ctrl-right" onclick="riscarTexto('d2')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('d3')">✓</div><div id="d3" class="label">Documentos Pessoais (RG e CPF)</div><div class="ctrl-right" onclick="riscarTexto('d3')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('d4')">✓</div><div id="d4" class="label">Comprovante de Endereço</div><div class="ctrl-right" onclick="riscarTexto('d4')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('d5')">✓</div><div id="d5" class="label">Matrícula desdobrada e/ou Certidão de Desdobro e croqui</div><div class="ctrl-right" onclick="riscarTexto('d5')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('d6')">✓</div><div id="d6" class="label">Sequência de contratos de compra e venda (se aplicável)</div><div class="ctrl-right" onclick="riscarTexto('d6')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('d7')">✓</div><div id="d7" class="label">Certidão Negativa de Débitos Imobiliários</div><div class="ctrl-right" onclick="riscarTexto('d7')">✕</div></div>
+        </div>
+    </section>
+
+    <!-- CERTIDÕES -->
+    <section id="conteudo-certidoes" class="conteudo" style="display:none">
+        <h2 style="color:var(--text)">Certidões</h2>
+        <div class="card">
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('ce1')">✓</div><div id="ce1" class="label">Especificação da solicitação e certidão requerida</div><div class="ctrl-right" onclick="riscarTexto('ce1')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('ce2')">✓</div><div id="ce2" class="label">Espelho de IPTU</div><div class="ctrl-right" onclick="riscarTexto('ce2')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('ce3')">✓</div><div id="ce3" class="label">Documentos Pessoais (RG e CPF)</div><div class="ctrl-right" onclick="riscarTexto('ce3')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('ce4')">✓</div><div id="ce4" class="label">Comprovante de Endereço</div><div class="ctrl-right" onclick="riscarTexto('ce4')">✕</div></div>
+            <div class="nota">Em caso do nome do requerente não constar no IPTU: apresentar sequência de documentos a partir do nome que consta no IPTU.</div>
+        </div>
+    </section>
+
+    <!-- INDIVIDUALIZAÇÃO DE CONDOMÍNIO -->
+    <section id="conteudo-condominio" class="conteudo" style="display:none">
+        <h2 style="color:var(--text)">Individualização de Condomínio</h2>
+        <div class="card">
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('co1')">✓</div><div id="co1" class="label">Espelho de IPTU da área maior (matriz)</div><div class="ctrl-right" onclick="riscarTexto('co1')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('co2')">✓</div><div id="co2" class="label">Documentos Pessoais (RG e CPF)</div><div class="ctrl-right" onclick="riscarTexto('co2')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('co3')">✓</div><div id="co3" class="label">Comprovante de Endereço</div><div class="ctrl-right" onclick="riscarTexto('co3')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('co4')">✓</div><div id="co4" class="label">Matrícula mãe (área maior)</div><div class="ctrl-right" onclick="riscarTexto('co4')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('co5')">✓</div><div id="co5" class="label">Matrículas individualizadas</div><div class="ctrl-right" onclick="riscarTexto('co5')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('co6')">✓</div><div id="co6" class="label">Memorial de Cálculo das Unidades (NBR)</div><div class="ctrl-right" onclick="riscarTexto('co6')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('co7')">✓</div><div id="co7" class="label">Alvará de Ocupação total</div><div class="ctrl-right" onclick="riscarTexto('co7')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('co8')">✓</div><div id="co8" class="label">Certidão Negativa de Débitos Imobiliários</div><div class="ctrl-right" onclick="riscarTexto('co8')">✕</div></div>
+        </div>
+    </section>
+
+    <!-- CADASTRAMENTO DE ÁREA -->
+    <section id="conteudo-cadastramento" class="conteudo" style="display:none">
+        <h2 style="color:var(--text)">Cadastramento de Área</h2>
+        <div class="card">
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('ca1')">✓</div><div id="ca1" class="label">Documentos Pessoais (RG e CPF)</div><div class="ctrl-right" onclick="riscarTexto('ca1')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('ca2')">✓</div><div id="ca2" class="label">Comprovante de Endereço</div><div class="ctrl-right" onclick="riscarTexto('ca2')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('ca3')">✓</div><div id="ca3" class="label">Matrícula ou Transcrição do Imóvel</div><div class="ctrl-right" onclick="riscarTexto('ca3')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('ca4')">✓</div><div id="ca4" class="label">Certidão de Perímetro</div><div class="ctrl-right" onclick="riscarTexto('ca4')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('ca5')">✓</div><div id="ca5" class="label">Levantamento Planialtimétrico</div><div class="ctrl-right" onclick="riscarTexto('ca5')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('ca6')">✓</div><div id="ca6" class="label">Descadastramento do INCRA (ITR) - quando aplicável</div><div class="ctrl-right" onclick="riscarTexto('ca6')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('ca7')">✓</div><div id="ca7" class="label">Memorial Descritivo</div><div class="ctrl-right" onclick="riscarTexto('ca7')">✕</div></div>
+        </div>
+    </section>
+
+    <!-- CADASTRO DE POSSUIDOR (ABAS 9) -->
+    <section id="conteudo-possuidor" class="conteudo" style="display:none">
+        <h2 style="color:var(--text)">Cadastro de Possuidor</h2>
+        <div class="card">
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('g1')">✓</div><div id="g1" class="label">REQUERIMENTO PADRÃO devidamente preenchido</div><div class="ctrl-right" onclick="riscarTexto('g1')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('g2')">✓</div><div id="g2" class="label">Cópia simples dos DOCUMENTOS PESSOAIS do requerente (RG e CPF) — OBRIGATÓRIO (registrar firma em cartório)</div><div class="ctrl-right" onclick="riscarTexto('g2')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('g3')">✓</div><div id="g3" class="label">Cópia simples do CONTRATO SOCIAL ou ESTATUTO (quando pessoa jurídica)</div><div class="ctrl-right" onclick="riscarTexto('g3')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('g4')">✓</div><div id="g4" class="label">PROCURAÇÃO original com firma reconhecida e RG/CPF do procurador (quando solicitado)</div><div class="ctrl-right" onclick="riscarTexto('g4')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('g5')">✓</div><div id="g5" class="label">DECLARAÇÃO DE POSSE assinada por 3 (três) vizinhos, com RG e CPF preenchidos e firma reconhecida</div><div class="ctrl-right" onclick="riscarTexto('g5')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('g6')">✓</div><div id="g6" class="label">Cópia simples do COMPROVANTE DE RESIDÊNCIA EM NOME DOS VIZINHOS que assinaram a declaração de posse</div><div class="ctrl-right" onclick="riscarTexto('g6')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('g7')">✓</div><div id="g7" class="label">Cópia simples de CONTAS DE CONSUMO (água, luz, telefone) em nome do requerente — MINIMO ÚLTIMOS 5 ANOS</div><div class="ctrl-right" onclick="riscarTexto('g7')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('g8')">✓</div><div id="g8" class="label">Cópia simples dos CONTRATOS DE COMPRA E VENDA (se possuir)</div><div class="ctrl-right" onclick="riscarTexto('g8')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('g9')">✓</div><div id="g9" class="label">Comprovante de pagamento da TAXA DE EXPEDIENTE (emitida no momento da entrada do pedido)</div><div class="ctrl-right" onclick="riscarTexto('g9')">✕</div></div>
+            <div class="nota">Caso julgue necessário o setor responsável poderá solicitar originais ou documentos complementares. Em caso de solicitação por terceiros, anexar procuração ou documentos que comprovem vínculo com o proprietário/requerente.</div>
+        </div>
+    </section>
+
 </div>
-
-<!-- ================== ABA: PROPRIETÁRIO ================== -->
-<div id="conteudo-proprietario" class="conteudo">
-    <h1>Alteração de Proprietário</h1>
-
-    <div class="grupo">
-        <h2>Obrigatórios</h2>
-        <div class="item"><span class="btn-mini" onclick="toggleRiscar('p1')"></span><span id="p1" class="texto">Matrícula Atualizada</span><span class="btn-mini btn-highlight"></span></div>
-        <div class="item"><span class="btn-mini" onclick="toggleRiscar('p2')"></span><span id="p2" class="texto">Requerimento / Solicitação</span><span class="btn-mini btn-highlight"></span></div>
-        <div class="item"><span class="btn-mini" onclick="toggleRiscar('p3')"></span><span id="p3" class="texto">Espelho de IPTU</span><span class="btn-mini btn-highlight"></span></div>
-        <div class="item"><span class="btn-mini" onclick="toggleRiscar('p4')"></span><span id="p4" class="texto">RG e CPF</span><span class="btn-mini btn-highlight"></span></div>
-        <div class="item"><span class="btn-mini" onclick="toggleRiscar('p5')"></span><span id="p5" class="texto">Comprovante de Endereço</span><span class="btn-mini btn-highlight"></span></div>
-        <p><em>Se o nome do requerente não constar no IPTU: apresentar sequência de documentos do titular.</em></p>
-    </div>
-</div>
-
-<!-- ================== OUTRAS ABAS ================== -->
-<!-- (Posso preencher todas completas se quiser!) -->
 
 </body>
 </html>
