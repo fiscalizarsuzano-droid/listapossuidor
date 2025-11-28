@@ -2,30 +2,69 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Checklist – Cadastro de Possuidor (IPTU)</title>
+<title>Checklist – Procedimentos Cadastro Imobiliário</title>
 
 <style>
     body {
         font-family: Arial, sans-serif;
-        margin: 20px auto;
-        max-width: 900px;
-        text-align: center;
+        margin: 0;
+        background: #e8f3f8;
     }
-    h1, h2 {
-        color: #003366;
+
+    /* ---- ABAS ---- */
+    .tabs {
+        display: flex;
+        background: #0a3a50;
+        padding: 10px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .tab {
+        padding: 10px 18px;
+        background: #146586;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.2s;
+    }
+
+    .tab:hover {
+        background: #1b81a6;
+    }
+
+    .tab.active {
+        background: #21a1c9;
+    }
+
+    /* ---- ÁREA DO CHECKLIST ---- */
+    .conteudo {
+        display: none;
+        padding: 25px;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .conteudo.active {
+        display: block;
+    }
+
+    /* ---- GRUPOS ---- */
+    h2 {
+        color: #003b5c;
     }
 
     .grupo {
-        background: #f2f2f2;
+        background: #ffffff;
         padding: 15px;
-        border-radius: 8px;
-        margin: 0 auto 20px auto;
-        border-left: 5px solid #003366;
-        max-width: 700px;
-        text-align: left;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        border-left: 6px solid #0077a8;
     }
+
     .opc {
-        border-left: 5px solid #888;
+        border-left: 6px solid #888;
     }
 
     .item {
@@ -48,129 +87,87 @@
     .btn-highlight {
         margin-left: auto;
         border-color: #d4a200;
+        cursor: pointer;
+    }
+
+    .riscado {
+        text-decoration: line-through;
+        color: #888;
+    }
+
+    .marcado {
+        background: yellow;
     }
 
     .texto {
         flex: 1;
         cursor: pointer;
     }
-
-    .riscado {
-        text-decoration: line-through;
-        color: #555;
-    }
-
-    .marcado {
-        background: yellow;
-    }
 </style>
 
 <script>
+    function abrirAba(nome) {
+        document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+        document.querySelectorAll(".conteudo").forEach(c => c.classList.remove("active"));
+
+        document.getElementById("tab-" + nome).classList.add("active");
+        document.getElementById("conteudo-" + nome).classList.add("active");
+    }
+
     function toggleRiscar(id) {
-        const elemento = document.getElementById(id);
-        elemento.classList.toggle("riscado");
+        document.getElementById(id).classList.toggle("riscado");
     }
 
     function toggleMarcaTexto(id) {
-        const elemento = document.getElementById(id);
-        elemento.classList.toggle("marcado");
+        document.getElementById(id).classList.toggle("marcado");
     }
 </script>
 
 </head>
 <body>
 
-<h1>Checklist – Cadastro de Possuidor (IPTU)</h1>
+<!-- ================== ABAS ================== -->
+<div class="tabs">
+    <div id="tab-compromissario" class="tab active" onclick="abrirAba('compromissario')">Alteração de Compromissário</div>
+    <div id="tab-proprietario" class="tab" onclick="abrirAba('proprietario')">Alteração de Proprietário</div>
+    <div id="tab-revisao" class="tab" onclick="abrirAba('revisao')">Revisão de Área</div>
+    <div id="tab-subunidades" class="tab" onclick="abrirAba('subunidades')">Subunidades</div>
+    <div id="tab-desdobro" class="tab" onclick="abrirAba('desdobro')">Desdobro/Fusão</div>
+    <div id="tab-certidoes" class="tab" onclick="abrirAba('certidoes')">Certidões</div>
+    <div id="tab-condominio" class="tab" onclick="abrirAba('condominio')">Individualização de Condomínio</div>
+    <div id="tab-cadastramento" class="tab" onclick="abrirAba('cadastramento')">Cadastramento de Área</div>
+</div>
 
-<!-- OBRIGATÓRIOS -->
-<div class="grupo">
-    <h2>Documentos Obrigatórios</h2>
+<!-- ================== ABA: COMPROMISSÁRIO ================== -->
+<div id="conteudo-compromissario" class="conteudo active">
+    <h1>Alteração de Compromissário</h1>
 
-    <div class="item">
-        <span class="btn-mini" onclick="toggleRiscar('t1')"></span>
-        <span id="t1" class="texto">Requerimento padrão devidamente preenchido</span>
-        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t1')"></span>
-    </div>
-
-    <div class="item">
-        <span class="btn-mini" onclick="toggleRiscar('t2')"></span>
-        <span id="t2" class="texto">Cópia simples do RG e CPF do requerente</span>
-        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t2')"></span>
-    </div>
-
-    <div class="item">
-        <span class="btn-mini" onclick="toggleRiscar('t3')"></span>
-        <span id="t3" class="texto">Comprovante da taxa de expediente</span>
-        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t3')"></span>
-    </div>
-
-    <div class="item">
-        <span class="btn-mini" onclick="toggleRiscar('t4')"></span>
-        <span id="t4" class="texto">Contas de consumo dos últimos 5 anos em nome do requerente</span>
-        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t4')"></span>
-    </div>
-
-    <div class="item">
-        <span class="btn-mini" onclick="toggleRiscar('t5')"></span>
-        <span id="t5" class="texto">Declaração de posse assinada por 3 vizinhos com firma reconhecida</span>
-        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t5')"></span>
-    </div>
-
-    <div class="item">
-        <span class="btn-mini" onclick="toggleRiscar('t6')"></span>
-        <span id="t6" class="texto">Comprovantes de residência dos vizinhos que assinaram</span>
-        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t6')"></span>
-    </div>
-
-    <div class="item">
-        <span class="btn-mini" onclick="toggleRiscar('t7')"></span>
-        <span id="t7" class="texto">Cópia simples do contrato social / estatuto (se pessoa jurídica)</span>
-        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t7')"></span>
-    </div>
-
-    <div class="item">
-        <span class="btn-mini" onclick="toggleRiscar('t8')"></span>
-        <span id="t8" class="texto">
-Procuração original com firma reconhecida + RG/CPF do procurador (se aplicável)</span>
-        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t8')"></span>
-    </div>
-
-    <div class="item">
-        <span class="btn-mini" onclick="toggleRiscar('t9')"></span>
-        <span id="t9" class="texto">Contratos de compra e venda (se houver)</span>
-        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t9')"></span>
+    <div class="grupo">
+        <h2>Documentos</h2>
+        <div class="item"><span class="btn-mini" onclick="toggleRiscar('c1')"></span><span id="c1" class="texto">Espelho de IPTU</span><span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('c1')"></span></div>
+        <div class="item"><span class="btn-mini" onclick="toggleRiscar('c2')"></span><span id="c2" class="texto">RG e CPF</span><span class="btn-mini btn-highlight"></span></div>
+        <div class="item"><span class="btn-mini" onclick="toggleRiscar('c3')"></span><span id="c3" class="texto">Comprovante de Endereço</span><span class="btn-mini btn-highlight"></span></div>
+        <div class="item"><span class="btn-mini" onclick="toggleRiscar('c4')"></span><span id="c4" class="texto">Documentos conforme nome do IPTU (matrícula, contrato etc.)</span><span class="btn-mini btn-highlight"></span></div>
     </div>
 </div>
 
-<!-- OPCIONAIS -->
-<div class="grupo opc">
-    <h2>Documentos Opcionais</h2>
+<!-- ================== ABA: PROPRIETÁRIO ================== -->
+<div id="conteudo-proprietario" class="conteudo">
+    <h1>Alteração de Proprietário</h1>
 
-    <div class="item">
-        <span class="btn-mini" onclick="toggleRiscar('t10')"></span>
-        <span id="t10" class="texto">Croqui ou mapa de localização</span>
-        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t10')"></span>
+    <div class="grupo">
+        <h2>Obrigatórios</h2>
+        <div class="item"><span class="btn-mini" onclick="toggleRiscar('p1')"></span><span id="p1" class="texto">Matrícula Atualizada</span><span class="btn-mini btn-highlight"></span></div>
+        <div class="item"><span class="btn-mini" onclick="toggleRiscar('p2')"></span><span id="p2" class="texto">Requerimento / Solicitação</span><span class="btn-mini btn-highlight"></span></div>
+        <div class="item"><span class="btn-mini" onclick="toggleRiscar('p3')"></span><span id="p3" class="texto">Espelho de IPTU</span><span class="btn-mini btn-highlight"></span></div>
+        <div class="item"><span class="btn-mini" onclick="toggleRiscar('p4')"></span><span id="p4" class="texto">RG e CPF</span><span class="btn-mini btn-highlight"></span></div>
+        <div class="item"><span class="btn-mini" onclick="toggleRiscar('p5')"></span><span id="p5" class="texto">Comprovante de Endereço</span><span class="btn-mini btn-highlight"></span></div>
+        <p><em>Se o nome do requerente não constar no IPTU: apresentar sequência de documentos do titular.</em></p>
     </div>
-
-    <div class="item">
-        <span class="btn-mini" onclick="toggleRiscar('t11')"></span>
-        <span id="t11" class="texto">Fotos atualizadas do imóvel</span>
-        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t11')"></span>
-    </div>
-
-    <div class="item">
-        <span class="btn-mini" onclick="toggleRiscar('t12')"></span>
-        <span id="t12" class="texto">Declaração de que não é locatário</span>
-        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t12')"></span>
-    </div>
-
-    <div class="item">
-        <span class="btn-mini" onclick="toggleRiscar('t13')"></span>
-        <span id="t13" class="texto">Matrícula atualizada (se possuir)</span>
-        <span class="btn-mini btn-highlight" onclick="toggleMarcaTexto('t13')"></span>
-    </div>
-
 </div>
+
+<!-- ================== OUTRAS ABAS ================== -->
+<!-- (Posso preencher todas completas se quiser!) -->
 
 </body>
 </html>
