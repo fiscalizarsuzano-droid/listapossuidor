@@ -507,16 +507,186 @@ Sonner: 4292-6001 watzap: 973173725...
         <b>WhatsApp:</b> 97211-8657<br><br>
         
         <b>E-MAIL – CADASTRO IMOBILIÁRIO</b><br>
-        cadastro.imobiliario@suzano.sp.gov.br<br>
-        Senha: Cadastro#10<br><br>
+        cadastro.imobiliario@suzano.sp.gov.br<br><br>
         
         <b>E-MAIL – ITBI</b><br>
         smf.itbi@suzano.sp.gov.br<br>
-        suzanocadastro@gmail.com<br>
-        Senha: cadastro10<br><br>
+        suzanocadastro@gmail.com<br><br>
         
         <b>E-MAIL – OUVIDORIA</b><br>
         ouvidoria@suzano.sp.gov.br<br><br>
+
+
+        <hr style="margin:15px 0;">
+        
+        <h3 style="color:#256f9c; margin-bottom:6px;">📚 Informações Extras</h3>
+        
+        <style>
+        .acordeao-btn {
+            width: 100%;
+            text-align: left;
+            padding: 10px;
+            background: #d9ecfa;
+            border: 1px solid #5aa7d7;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 6px;
+        }
+        .acordeao-content {
+            display: none;
+            background: #ffffff;
+            border: 1px solid #5aa7d7;
+            border-radius: 6px;
+            padding: 10px;
+            margin-top: 3px;
+            font-size: 14px;
+            line-height: 1.45;
+        }
+        </style>
+        
+        <script>
+        function toggleAcordeao(id){
+            const el = document.getElementById(id);
+            el.style.display = el.style.display === "block" ? "none" : "block";
+        }
+        </script>
+        
+        <!-- 1 - CADASTRO DE ÁREA -->
+        <button class="acordeao-btn" onclick="toggleAcordeao('cadArea')">📌 Cadastro de Área</button>
+        <div id="cadArea" class="acordeao-content">
+        <b>Documentos necessários:</b><br>
+        • Secretaria de Planejamento Urbano e Habitação<br>
+        • Certidão de Perímetro<br>
+        • Croqui<br>
+        • Matrícula<br>
+        • INCRA (se tiver: pedir descadastramento e anexar)<br>
+        • Documentos pessoais<br>
+        </div>
+        
+        <!-- 2 - IPCA -->
+        <button class="acordeao-btn" onclick="toggleAcordeao('ipca')">📊 IPCA</button>
+        <div id="ipca" class="acordeao-content">
+        <b>IPCA 2024:</b> 4,82%<br>
+        <b>IPCA 2025:</b> 4,76%
+        </div>
+        
+        <!-- 3 - PGV -->
+        <button class="acordeao-btn" onclick="toggleAcordeao('pgv')">📐 PGV – IPTU (Lei 309/17)</button>
+        <div id="pgv" class="acordeao-content">
+        Usado para cálculo atualizado do IPTU com base em Planta Genérica de Valores.
+        </div>
+        
+        <!-- 4 - GEBELIM -->
+        <button class="acordeao-btn" onclick="toggleAcordeao('gebelim')">🏢 GEBELIM – Informações</button>
+        <div id="gebelim" class="acordeao-content">
+        <b>GEBELIM – Empreendimentos Imobiliários LTDA</b><br>
+        Cód. Red.: 12683<br><br>
+        <b>Endereço:</b><br>
+        Rua Almirante Barroso, 587 – Brás – SP<br>
+        CEP 03025-001<br><br>
+        <b>Responsáveis:</b><br>
+        • Carlos A. Caldeira<br>
+        • Aparicio N. Caldeira<br>
+        • Elisa J. Caldeira<br>
+        • Sandra R. C. T. Verdi<br>
+        • Renato C. Troise<br>
+        • Denise C. R. Mesquita<br><br>
+        <b>Outras Vinculações:</b><br>
+        • GEBELIM / IBIAÇU = CONDE<br>
+        • PAULISTERRA = MASA<br>
+        • Construtora DALAR = PROBASE<br>
+        • MANDUX e HRF (a confirmar)
+        </div>
+        
+        <!-- 5 - CERTIDÕES ACTO -->
+        <button class="acordeao-btn" onclick="toggleAcordeao('certidoesActo')">📄 Certidões ACTO – Pagas</button>
+        <div id="certidoesActo" class="acordeao-content">
+        • Certidão de Valor Venal (anos anteriores)<br>
+        • CVV não lançada<br>
+        • Valor Venal por metro quadrado<br>
+        • Época de Lançamento (Construção)<br>
+        • Época de Lançamento (IPTU)<br>
+        • Certidão de Confrontações – 10 dias (Edson)<br>
+        • Certidão Negativa de Propriedade – 3 dias<br>
+        • Certidão Originária (ver subunidade)<br><br>
+        <b>Obs.:</b> Certidão Negativa de Tributos Imobiliários = CND
+        </div>
+        
+        <!-- 6 - ASSINATURA DIGITAL -->
+        <button class="acordeao-btn" onclick="toggleAcordeao('assinaturaDig')">🖊️ Assinatura Digital – Lei 14.063/2020</button>
+        <div id="assinaturaDig" class="acordeao-content">
+        <b>Assinatura Digital ICP Brasil</b><br><br>
+        
+        <b>Níveis:</b><br>
+        • Simples – baixo impacto<br>
+        • Avançada – aceita para maioria das interações<br>
+        • Qualificada – aceita para tudo, sem restrições<br><br>
+        
+        <b>Obrigatória para:</b><br>
+        • Chefes de poder<br>
+        • Notas fiscais eletrônicas<br>
+        • Transferência e registro de imóveis<br><br>
+        
+        Base legal disponível no texto da Lei 14.063/2020.
+        </div>
+        
+        <!-- 7 - TRANSCRIÇÃO -->
+        <button class="acordeao-btn" onclick="toggleAcordeao('transcricao')">📑 Transcrição (Registro)</button>
+        <div id="transcricao" class="acordeao-content">
+        A transcrição é usada para <b>divisão de lote</b>.<br>
+        <b>Não serve</b> para alteração de proprietário.<br><br>
+        <b>Base Legal:</b> Lei 6.015/73 (Registros Públicos)
+        </div>
+        
+        <!-- 8 - ITBI -->
+        <button class="acordeao-btn" onclick="toggleAcordeao('itbi')">💰 Cálculo do ITBI</button>
+        <div id="itbi" class="acordeao-content">
+        <b>Recurso próprio:</b> 2% do valor da compra<br>
+        <b>Financiado:</b><br>
+        • entrada → 2%<br>
+        • saldo financiado → 0,5%<br><br>
+        <b>Prazo de vencimento:</b> 60 dias
+        </div>
+        
+        <!-- 9 - TAXA DE LUZ -->
+        <button class="acordeao-btn" onclick="toggleAcordeao('luz')">💡 Lei da Taxa de Luz – 262/2014</button>
+        <div id="luz" class="acordeao-content">
+        Legislação que trata da cobrança da iluminação pública.
+        </div>
+        
+        <!-- 10 - TREVISAN -->
+        <button class="acordeao-btn" onclick="toggleAcordeao('trevisan')">🏛️ TREVISAN → MAZA</button>
+        <div id="trevisan" class="acordeao-content">
+        Cadastro ou referência antiga em que "TREVISAN" foi substituído por "MAZA".
+        </div>
+        
+        <!-- 11 - NUA PROPRIEDADE -->
+        <button class="acordeao-btn" onclick="toggleAcordeao('nuaProp')">🏠 Nua Propriedade x Usufruto</button>
+        <div id="nuaProp" class="acordeao-content">
+        <b>Nua Propriedade:</b> é dono, mas não pode usar.<br>
+        <b>Usufruto vitalício:</b> pode usar mesmo sem ser dono.
+        </div>
+        
+        <!-- 12 - ALTERAR NOME DE RUA -->
+        <button class="acordeao-btn" onclick="toggleAcordeao('nomeRua')">📍 Alteração de Nome de Rua</button>
+        <div id="nomeRua" class="acordeao-content">
+        <b>Procedimento:</b><br>
+        • Tabela<br>
+        • Endereço<br>
+        • Logradouro<br>
+        • Código do imóvel<br>
+        • Tipo = Rua<br>
+        • Nome = (novo nome)<br>
+        • Data<br>
+        • Lei autorizativa<br>
+        </div>
+        
+        <!-- 13 - FAR / CEF -->
+        <button class="acordeao-btn" onclick="toggleAcordeao('far')">🏦 FAR / CEF</button>
+        <div id="far" class="acordeao-content">
+        Para venda: prazo mínimo de <b>120 meses</b> para permitir transferência, e apenas após matrícula estar no nome do comprador.
+        </div>
 
 
 </div>
