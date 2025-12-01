@@ -113,8 +113,54 @@
         body{flex-direction:column}
         .area{padding:16px}
     }
+
 </style>
 
+<style>
+        /* RESPONSIVIDADE PARA CELULAR */
+        @media (max-width: 600px) {
+        
+            /* Botões – alinhar em uma barra superior fixa */
+            #lembreteBtn,
+            #ramalBtn,
+            #infoExtrasBtn,
+            #novoBtn {
+                bottom: 10px;
+                padding: 10px;
+                font-size: 14px;
+                position: fixed;
+            }
+        
+            /* Posições adaptadas (ficam um pouco mais próximos) */
+            #lembreteBtn { right: 10px; }
+            #ramalBtn { right: 95px; }
+            #infoExtrasBtn { right: 180px; }
+            #novoBtn { right: 265px; }
+        
+            /* PAINEIS – ocupar quase a tela inteira */
+            #lembreteBox,
+            #ramalBox,
+            #infoExtrasBox,
+            #novoBox {
+                width: 95vw;
+                height: 70vh;
+                right: 2.5vw;
+                bottom: 60px;
+                font-size: 15px;
+            }
+        
+            /* Botões internos do acordeão */
+            .ex-btn {
+                font-size: 15px;
+                padding: 12px;
+            }
+        
+            .ex-content {
+                font-size: 14px;
+            }
+        }
+
+</style>
 <style>
         /* Botão que abre o painel */
         #lembreteBtn {
