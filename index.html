@@ -517,26 +517,57 @@ Sonner: 4292-6001 watzap: 973173725...
         ouvidoria@suzano.sp.gov.br<br><br>
 
 
-        <hr style="margin:15px 0;">
+        <!-- BOTÃO INFO EXTRAS -->
+        <button id="infoExtrasBtn" style="
+            position: fixed;
+            right: 260px;
+            bottom: 10px;
+            padding: 10px 14px;
+            background: #9c27b0;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 9999;
+        ">Info Extras</button>
         
-        <h3 style="color:#256f9c; margin-bottom:6px;">📚 Informações Extras</h3>
+        <!-- PAINEL INFO EXTRAS -->
+        <div id="infoExtrasBox" style="
+            position: fixed;
+            right: 260px;
+            bottom: 60px;
+            width: 380px;
+            height: 480px;
+            background: white;
+            border: 2px solid #9c27b0;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            display: none;
+            overflow-y: auto;
+            z-index: 9999;
+            font-size: 14px;
+        ">
+        
+        <h3 style="margin-top:0; color:#9c27b0;">📚 Informações Extras</h3>
         
         <style>
-        .acordeao-btn {
+        .ex-btn {
             width: 100%;
             text-align: left;
             padding: 10px;
-            background: #d9ecfa;
-            border: 1px solid #5aa7d7;
+            background: #f3d9fa;
+            border: 1px solid #bc5ed3;
             border-radius: 6px;
             cursor: pointer;
             font-weight: bold;
             margin-top: 6px;
         }
-        .acordeao-content {
+        .ex-content {
             display: none;
             background: #ffffff;
-            border: 1px solid #5aa7d7;
+            border: 1px solid #bc5ed3;
             border-radius: 6px;
             padding: 10px;
             margin-top: 3px;
@@ -546,147 +577,144 @@ Sonner: 4292-6001 watzap: 973173725...
         </style>
         
         <script>
-        function toggleAcordeao(id){
+        function toggleExtra(id){
             const el = document.getElementById(id);
             el.style.display = el.style.display === "block" ? "none" : "block";
         }
+        
+        const infoBtn = document.getElementById("infoExtrasBtn");
+        const infoBox = document.getElementById("infoExtrasBox");
+        
+        infoBtn.onclick = () => {
+            infoBox.style.display =
+                infoBox.style.display === "none" ? "block" : "none";
+        };
         </script>
         
-        <!-- 1 - CADASTRO DE ÁREA -->
-        <button class="acordeao-btn" onclick="toggleAcordeao('cadArea')">📌 Cadastro de Área</button>
-        <div id="cadArea" class="acordeao-content">
-        <b>Documentos necessários:</b><br>
-        • Secretaria de Planejamento Urbano e Habitação<br>
-        • Certidão de Perímetro<br>
+        <!-- CONTEÚDOS COMO ACORDEÃO -->
+        
+        <!-- CADASTRO DE ÁREA -->
+        <button class="ex-btn" onclick="toggleExtra('cadAreaEX')">📌 Cadastro de Área</button>
+        <div id="cadAreaEX" class="ex-content">
+        • Sec. Planejamento Urbano e Habitação<br>
+        • Certidão de perímetro<br>
         • Croqui<br>
         • Matrícula<br>
-        • INCRA (se tiver: pedir descadastramento e anexar)<br>
+        • INCRA (descadastramento se houver)<br>
         • Documentos pessoais<br>
         </div>
         
-        <!-- 2 - IPCA -->
-        <button class="acordeao-btn" onclick="toggleAcordeao('ipca')">📊 IPCA</button>
-        <div id="ipca" class="acordeao-content">
+        <!-- IPCA -->
+        <button class="ex-btn" onclick="toggleExtra('ipcaEX')">📊 IPCA</button>
+        <div id="ipcaEX" class="ex-content">
         <b>IPCA 2024:</b> 4,82%<br>
         <b>IPCA 2025:</b> 4,76%
         </div>
         
-        <!-- 3 - PGV -->
-        <button class="acordeao-btn" onclick="toggleAcordeao('pgv')">📐 PGV – IPTU (Lei 309/17)</button>
-        <div id="pgv" class="acordeao-content">
-        Usado para cálculo atualizado do IPTU com base em Planta Genérica de Valores.
+        <!-- PGV -->
+        <button class="ex-btn" onclick="toggleExtra('pgvEX')">📐 PGV – Lei 309/17</button>
+        <div id="pgvEX" class="ex-content">
+        Utilizado para cálculo do IPTU com base na Planta Genérica de Valores.
         </div>
         
-        <!-- 4 - GEBELIM -->
-        <button class="acordeao-btn" onclick="toggleAcordeao('gebelim')">🏢 GEBELIM – Informações</button>
-        <div id="gebelim" class="acordeao-content">
-        <b>GEBELIM – Empreendimentos Imobiliários LTDA</b><br>
-        Cód. Red.: 12683<br><br>
-        <b>Endereço:</b><br>
-        Rua Almirante Barroso, 587 – Brás – SP<br>
-        CEP 03025-001<br><br>
-        <b>Responsáveis:</b><br>
-        • Carlos A. Caldeira<br>
-        • Aparicio N. Caldeira<br>
-        • Elisa J. Caldeira<br>
-        • Sandra R. C. T. Verdi<br>
-        • Renato C. Troise<br>
-        • Denise C. R. Mesquita<br><br>
-        <b>Outras Vinculações:</b><br>
-        • GEBELIM / IBIAÇU = CONDE<br>
+        <!-- GEBELIM -->
+        <button class="ex-btn" onclick="toggleExtra('gebEX')">🏢 GEBELIM – Dados</button>
+        <div id="gebEX" class="ex-content">
+        <b>GEBELIM – Empreend. Imob. LTDA</b><br>
+        Cód. Red.: 12683<br>
+        Rua Almirante Barroso, 587 – Brás – SP<br><br>
+        <b>Pessoas ligadas:</b><br>
+        Carlos / Aparicio / Elisa / Sandra / Renato / Denise<br><br>
+        <b>Relações:</b><br>
+        • GEBELIM – IBIAÇU = CONDE<br>
         • PAULISTERRA = MASA<br>
-        • Construtora DALAR = PROBASE<br>
-        • MANDUX e HRF (a confirmar)
+        • DALAR = PROBASE<br>
+        • MANDUX / HRF (?)<br>
         </div>
         
-        <!-- 5 - CERTIDÕES ACTO -->
-        <button class="acordeao-btn" onclick="toggleAcordeao('certidoesActo')">📄 Certidões ACTO – Pagas</button>
-        <div id="certidoesActo" class="acordeao-content">
-        • Certidão de Valor Venal (anos anteriores)<br>
+        <!-- CERTIDÕES ACTO -->
+        <button class="ex-btn" onclick="toggleExtra('certEX')">📄 Certidões ACTO (Pagas)</button>
+        <div id="certEX" class="ex-content">
+        • CVV anos anteriores<br>
         • CVV não lançada<br>
-        • Valor Venal por metro quadrado<br>
-        • Época de Lançamento (Construção)<br>
-        • Época de Lançamento (IPTU)<br>
-        • Certidão de Confrontações – 10 dias (Edson)<br>
-        • Certidão Negativa de Propriedade – 3 dias<br>
-        • Certidão Originária (ver subunidade)<br><br>
+        • Valor venal por m²<br>
+        • Época de lançamento (construção/IPTU)<br>
+        • Confrontações – 10 dias<br>
+        • CNP – 3 dias<br>
+        • Certidão originária (subunidade)<br><br>
         <b>Obs.:</b> Certidão Negativa de Tributos Imobiliários = CND
         </div>
         
-        <!-- 6 - ASSINATURA DIGITAL -->
-        <button class="acordeao-btn" onclick="toggleAcordeao('assinaturaDig')">🖊️ Assinatura Digital – Lei 14.063/2020</button>
-        <div id="assinaturaDig" class="acordeao-content">
-        <b>Assinatura Digital ICP Brasil</b><br><br>
-        
+        <!-- ASSINATURA DIGITAL -->
+        <button class="ex-btn" onclick="toggleExtra('assinEX')">🖊️ Assinatura Digital – Lei 14.063/20</button>
+        <div id="assinEX" class="ex-content">
+        Assinatura ICP Brasil.<br><br>
         <b>Níveis:</b><br>
-        • Simples – baixo impacto<br>
-        • Avançada – aceita para maioria das interações<br>
-        • Qualificada – aceita para tudo, sem restrições<br><br>
-        
+        • Simples<br>
+        • Avançada<br>
+        • Qualificada (usa para tudo)<br><br>
         <b>Obrigatória para:</b><br>
         • Chefes de poder<br>
-        • Notas fiscais eletrônicas<br>
-        • Transferência e registro de imóveis<br><br>
-        
-        Base legal disponível no texto da Lei 14.063/2020.
+        • NF-e (exceto PF/MEI)<br>
+        • Transferência e registro de imóveis<br>
         </div>
         
-        <!-- 7 - TRANSCRIÇÃO -->
-        <button class="acordeao-btn" onclick="toggleAcordeao('transcricao')">📑 Transcrição (Registro)</button>
-        <div id="transcricao" class="acordeao-content">
-        A transcrição é usada para <b>divisão de lote</b>.<br>
-        <b>Não serve</b> para alteração de proprietário.<br><br>
-        <b>Base Legal:</b> Lei 6.015/73 (Registros Públicos)
+        <!-- TRANSCRIÇÃO -->
+        <button class="ex-btn" onclick="toggleExtra('transEX')">📑 Transcrição</button>
+        <div id="transEX" class="ex-content">
+        Usada para <b>divisão de lote</b>.<br>
+        Não altera proprietário.<br><br>
+        Base: Lei 6.015/73.
         </div>
         
-        <!-- 8 - ITBI -->
-        <button class="acordeao-btn" onclick="toggleAcordeao('itbi')">💰 Cálculo do ITBI</button>
-        <div id="itbi" class="acordeao-content">
-        <b>Recurso próprio:</b> 2% do valor da compra<br>
-        <b>Financiado:</b><br>
-        • entrada → 2%<br>
-        • saldo financiado → 0,5%<br><br>
-        <b>Prazo de vencimento:</b> 60 dias
+        <!-- ITBI -->
+        <button class="ex-btn" onclick="toggleExtra('itbiEX')">💰 ITBI – Cálculo</button>
+        <div id="itbiEX" class="ex-content">
+        <b>À vista:</b> 2%<br>
+        <b>Financiado:</b> entrada 2% + saldo 0,5%<br>
+        <b>Prazo:</b> 60 dias
         </div>
         
-        <!-- 9 - TAXA DE LUZ -->
-        <button class="acordeao-btn" onclick="toggleAcordeao('luz')">💡 Lei da Taxa de Luz – 262/2014</button>
-        <div id="luz" class="acordeao-content">
-        Legislação que trata da cobrança da iluminação pública.
+        <!-- TAXA DE LUZ -->
+        <button class="ex-btn" onclick="toggleExtra('luzEX')">💡 Taxa de Luz – Lei 262/2014</button>
+        <div id="luzEX" class="ex-content">
+        Legislação municipal sobre a cobrança da iluminação pública.
         </div>
         
-        <!-- 10 - TREVISAN -->
-        <button class="acordeao-btn" onclick="toggleAcordeao('trevisan')">🏛️ TREVISAN → MAZA</button>
-        <div id="trevisan" class="acordeao-content">
-        Cadastro ou referência antiga em que "TREVISAN" foi substituído por "MAZA".
+        <!-- TREVISAN -->
+        <button class="ex-btn" onclick="toggleExtra('trevEX')">🏛️ TREVISAN → MAZA</button>
+        <div id="trevEX" class="ex-content">
+        Mudança cadastral/administrativa registrada internamente.
         </div>
         
-        <!-- 11 - NUA PROPRIEDADE -->
-        <button class="acordeao-btn" onclick="toggleAcordeao('nuaProp')">🏠 Nua Propriedade x Usufruto</button>
-        <div id="nuaProp" class="acordeao-content">
-        <b>Nua Propriedade:</b> é dono, mas não pode usar.<br>
+        <!-- NUA PROPRIEDADE -->
+        <button class="ex-btn" onclick="toggleExtra('nuaEX')">🏠 Nua Propriedade / Usufruto</button>
+        <div id="nuaEX" class="ex-content">
+        <b>Nua Propriedade:</b> dono sem uso.<br>
         <b>Usufruto vitalício:</b> pode usar mesmo sem ser dono.
         </div>
         
-        <!-- 12 - ALTERAR NOME DE RUA -->
-        <button class="acordeao-btn" onclick="toggleAcordeao('nomeRua')">📍 Alteração de Nome de Rua</button>
-        <div id="nomeRua" class="acordeao-content">
-        <b>Procedimento:</b><br>
+        <!-- ALTERAR NOME DE RUA -->
+        <button class="ex-btn" onclick="toggleExtra('ruaEX')">📍 Alteração de Nome de Rua</button>
+        <div id="ruaEX" class="ex-content">
         • Tabela<br>
         • Endereço<br>
         • Logradouro<br>
         • Código do imóvel<br>
         • Tipo = Rua<br>
-        • Nome = (novo nome)<br>
+        • Novo nome<br>
         • Data<br>
-        • Lei autorizativa<br>
+        • Lei<br>
         </div>
         
-        <!-- 13 - FAR / CEF -->
-        <button class="acordeao-btn" onclick="toggleAcordeao('far')">🏦 FAR / CEF</button>
-        <div id="far" class="acordeao-content">
-        Para venda: prazo mínimo de <b>120 meses</b> para permitir transferência, e apenas após matrícula estar no nome do comprador.
+        <!-- FAR / CEF -->
+        <button class="ex-btn" onclick="toggleExtra('farEX')">🏦 FAR / CEF</button>
+        <div id="farEX" class="ex-content">
+        Venda só após <b>120 meses</b> + matrícula no nome do comprador.
         </div>
+        
+        </div>
+
 
 
 </div>
