@@ -356,6 +356,133 @@ Sonner: 4292-6001 watzap: 973173725...
 
 
 
+
+<!-- BOTÃO RAMAL -->
+<button id="ramalBtn" style="
+    position: fixed;
+    right: 130px;
+    bottom: 10px;
+    padding: 10px 14px;
+    background: #2e8b57;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 9999;
+">Lembrete Ramal</button>
+
+<!-- PAINEL RAMAL -->
+<div id="ramalBox" style="
+    position: fixed;
+    right: 130px;
+    bottom: 60px;
+    width: 330px;
+    height: 420px;
+    background: white;
+    border: 2px solid #2e8b57;
+    border-radius: 12px;
+    padding: 12px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    display: none;
+    overflow-y: auto;
+    z-index: 9999;
+    font-size: 14px;
+    line-height: 1.45;
+">
+
+<h3 style="margin-top:0; color:#2e8b57;">📞 Ramais e Atendimentos</h3>
+
+<div>
+    <b>SALA 102 – PLANEJAMENTO</b><br>
+    <b>Ramal:</b> 2028 | 2175 | 2158<br>
+    • Certidões de Desdobro<br>
+    • Uso do Solo<br>
+    • Plantas<br>
+    • Verificar Zona Rural<br>
+    • ITR<br>
+    • Saber quem é o proprietário<br>
+    • IPTU novo (quando não possui)<br>
+    • Certidão de denominação de rua<br><br>
+
+    <b>SALA 103 – OBRAS</b><br>
+    <b>Ramal:</b> 2162 | 2083<br>
+    • Fiscalização de Obras<br>
+    • Certificado Digital<br>
+    • Número Oficial<br>
+    • Erro no Endereço<br><br>
+
+    <b>SALA 104 – APROVAÇÃO DE PROJETOS</b><br>
+    <b>Ramal:</b> 2128<br>
+    • Projetos<br>
+    • Renovação<br>
+    • Planta Popular<br>
+    • Alvará<br><br>
+
+    <b>SALA 106 – HABITAÇÃO</b><br>
+    <b>Ramal:</b> 2162 | 2073<br>
+    • Regularização Fundiária<br>
+    • Obras e Engenharia<br><br>
+
+    <b>SALA 201 – ASSESSORIA DE RECEITA</b><br>
+    <b>Ramais:</b> 2002 (Cancelamento CCM) | 2003 (Isenção) | 2022 (VRE)<br><br>
+
+    <b>SALA 202 – CADASTRO MOBILIÁRIO</b><br>
+    <b>Ramais:</b> 2025 | 2013<br>
+    • Fiscalização ICAD<br>
+    • CCM – Cadastro de Contribuinte Mobiliário<br>
+    • Erro de endereço no CNPJ<br>
+    • Inscrição Municipal<br><br>
+
+    <b>SALA 203 – FISCALIZAÇÃO TRIBUTÁRIA</b><br>
+    <b>Ramais:</b> 2023 | 2012<br>
+    • CNPJ<br>
+    • ISS<br>
+    • Alvará de Funcionamento<br><br>
+
+    <b>SALA 204 – CADASTRO IMOBILIÁRIO</b><br>
+    <b>Ramais:</b> 2010 | 2024 (ITBI)<br><br>
+
+    <b>SALA 205 – DÍVIDA ATIVA</b><br>
+    <b>Ramais:</b> 2007 | 2008 (WhatsApp – Parcelamento/Refis)<br>
+    • CND – Certidão Negativa de Débitos<br><br>
+
+    <b>SALA 207 – ANÁLISE DE RECEITA</b><br>
+    <b>Ramal:</b> 2006 (Elmo e Helena)<br><br>
+
+    <b>SALA 207 – DIRETORIA DE RECEITA</b><br>
+    <b>Ramal:</b> 2036 (Sara e Dani)<br><br>
+
+    <b>SALA 208 – MOISÉS ALVES</b><br>
+    <b>Ramal:</b> 2004<br><br>
+
+    <b>POSTURAS</b><br>
+    <b>Ramal:</b> 2046<br>
+    • Verificar conformidade do imóvel (calçada etc.)<br><br>
+
+    <b>PROTOCOLO</b><br>
+    <b>Ramais:</b> 2267 (recepção) | 2266<br>
+    • Boletos<br>
+    • Certidão de Valor Venal (anos anteriores) – CVV<br>
+    • Certidão Negativa de Propriedade – CNP (com taxa)<br>
+</div>
+
+</div>
+
+<script>
+const ramalBtn = document.getElementById("ramalBtn");
+const ramalBox = document.getElementById("ramalBox");
+
+ramalBtn.onclick = () => {
+    ramalBox.style.display =
+        ramalBox.style.display === "none" ? "block" : "none";
+};
+</script>
+
+
+
+
+
 </div>
 </body>
 </html>
