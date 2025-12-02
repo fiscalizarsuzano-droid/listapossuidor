@@ -338,12 +338,131 @@
 
 <div id="lembreteBox" style="display:none;">
     <textarea id="lembreteText" placeholder="
-Formal de Partilha...
-Divida ativa: 4745-2007...
-FAR: 120 meses pra poder vender...
-DTI: 47452151...
-Sonner: 4292-6001 watzap: 973173725...
-"></textarea>
+                <!-- CONTEÚDOS COMO ACORDEÃO -->
+        
+        <!-- CADASTRO DE ÁREA -->
+        <button class="ex-btn" onclick="toggleExtra('cadAreaEX')">📌 Cadastro de Área</button>
+        <div id="cadAreaEX" class="ex-content">
+        • Sec. Planejamento Urbano e Habitação<br>
+        • Certidão de perímetro<br>
+        • Croqui<br>
+        • Matrícula<br>
+        • INCRA (descadastramento se houver)<br>
+        • Documentos pessoais<br>
+        </div>
+        
+        <!-- IPCA -->
+        <button class="ex-btn" onclick="toggleExtra('ipcaEX')">📊 IPCA</button>
+        <div id="ipcaEX" class="ex-content">
+        <b>IPCA 2024:</b> 4,82%<br>
+        <b>IPCA 2025:</b> 4,76%
+        </div>
+        
+        <!-- PGV -->
+        <button class="ex-btn" onclick="toggleExtra('pgvEX')">📐 PGV – Lei 309/17</button>
+        <div id="pgvEX" class="ex-content">
+        Utilizado para cálculo do IPTU com base na Planta Genérica de Valores.
+        </div>
+        
+        <!-- GEBELIM -->
+        <button class="ex-btn" onclick="toggleExtra('gebEX')">🏢 GEBELIM – Dados</button>
+        <div id="gebEX" class="ex-content">
+        <b>GEBELIM – Empreend. Imob. LTDA</b><br>
+        Cód. Red.: 12683<br>
+        Rua Almirante Barroso, 587 – Brás – SP<br><br>
+        <b>Pessoas ligadas:</b><br>
+        Carlos / Aparicio / Elisa / Sandra / Renato / Denise<br><br>
+        <b>Relações:</b><br>
+        • GEBELIM – IBIAÇU = CONDE<br>
+        • PAULISTERRA = MASA<br>
+        • DALAR = PROBASE<br>
+        • MANDUX / HRF (?)<br>
+        </div>
+        
+        <!-- CERTIDÕES ACTO -->
+        <button class="ex-btn" onclick="toggleExtra('certEX')">📄 Certidões ACTO (Pagas)</button>
+        <div id="certEX" class="ex-content">
+        • CVV anos anteriores<br>
+        • CVV não lançada<br>
+        • Valor venal por m²<br>
+        • Época de lançamento (construção/IPTU)<br>
+        • Confrontações – 10 dias<br>
+        • CNP – 3 dias<br>
+        • Certidão originária (subunidade)<br><br>
+        <b>Obs.:</b> Certidão Negativa de Tributos Imobiliários = CND
+        </div>
+        
+        <!-- ASSINATURA DIGITAL -->
+        <button class="ex-btn" onclick="toggleExtra('assinEX')">🖊️ Assinatura Digital – Lei 14.063/20</button>
+        <div id="assinEX" class="ex-content">
+        Assinatura ICP Brasil.<br><br>
+        <b>Níveis:</b><br>
+        • Simples<br>
+        • Avançada<br>
+        • Qualificada (usa para tudo)<br><br>
+        <b>Obrigatória para:</b><br>
+        • Chefes de poder<br>
+        • NF-e (exceto PF/MEI)<br>
+        • Transferência e registro de imóveis<br>
+        </div>
+        
+        <!-- TRANSCRIÇÃO -->
+        <button class="ex-btn" onclick="toggleExtra('transEX')">📑 Transcrição</button>
+        <div id="transEX" class="ex-content">
+        Usada para <b>divisão de lote</b>.<br>
+        Não altera proprietário.<br><br>
+        Base: Lei 6.015/73.
+        </div>
+        
+        <!-- ITBI -->
+        <button class="ex-btn" onclick="toggleExtra('itbiEX')">💰 ITBI – Cálculo</button>
+        <div id="itbiEX" class="ex-content">
+        <b>À vista:</b> 2%<br>
+        <b>Financiado:</b> entrada 2% + saldo 0,5%<br>
+        <b>Prazo:</b> 60 dias
+        </div>
+        
+        <!-- TAXA DE LUZ -->
+        <button class="ex-btn" onclick="toggleExtra('luzEX')">💡 Taxa de Luz – Lei 262/2014</button>
+        <div id="luzEX" class="ex-content">
+        Legislação municipal sobre a cobrança da iluminação pública.
+        </div>
+        
+        <!-- TREVISAN -->
+        <button class="ex-btn" onclick="toggleExtra('trevEX')">🏛️ TREVISAN → MAZA</button>
+        <div id="trevEX" class="ex-content">
+        Mudança cadastral/administrativa registrada internamente.
+        </div>
+        
+        <!-- NUA PROPRIEDADE -->
+        <button class="ex-btn" onclick="toggleExtra('nuaEX')">🏠 Nua Propriedade / Usufruto</button>
+        <div id="nuaEX" class="ex-content">
+        <b>Nua Propriedade:</b> dono sem uso.<br>
+        <b>Usufruto vitalício:</b> pode usar mesmo sem ser dono.
+        </div>
+        
+        <!-- ALTERAR NOME DE RUA -->
+        <button class="ex-btn" onclick="toggleExtra('ruaEX')">📍 Alteração de Nome de Rua</button>
+        <div id="ruaEX" class="ex-content">
+        • Tabela<br>
+        • Endereço<br>
+        • Logradouro<br>
+        • Código do imóvel<br>
+        • Tipo = Rua<br>
+        • Novo nome<br>
+        • Data<br>
+        • Lei<br>
+        </div>
+        
+        <!-- FAR / CEF -->
+        <button class="ex-btn" onclick="toggleExtra('farEX')">🏦 FAR / CEF</button>
+        <div id="farEX" class="ex-content">
+        Venda só após <b>120 meses</b> + matrícula no nome do comprador.</div>
+       
+        <!-- cartorio imob -->
+        <button class="ex-btn" onclick="toggleExtra('imovEX')">🏦 Cartório de Imoveis / CEF</button>
+        <div id="imovEX" class="ex-content">
+        Endereço: R. José García de Souza, 74 - Parque Suzano, Suzano - SP, 08673-040 <b> Telefone</b>  (11) 4747-3719.</div>
 </div>
 
 <script>
