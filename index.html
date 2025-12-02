@@ -516,6 +516,10 @@ Sonner: 4292-6001 watzap: 973173725...
         ouvidoria@suzano.sp.gov.br<br><br>
 </div>
 
+<!-- PAINEL INFO EXTRAS -->
+<div id="infoExtrasBox" class="painel">
+    <h3 style="margin-top:0; color:#9c27b0;">📚 Informações Extras</h3>
+
                 <!-- BOTÃO INFO EXTRAS -->
         <button id="infoExtrasBtn" style="
             position: fixed;
@@ -715,8 +719,69 @@ Sonner: 4292-6001 watzap: 973173725...
         <button class="ex-btn" onclick="toggleExtra('imovEX')">🏦 Cartório de Imoveis / CEF</button>
         <div id="imovEX" class="ex-content">
         Endereço: R. José García de Souza, 74 - Parque Suzano, Suzano - SP, 08673-040 <b> Telefone</b>  (11) 4747-3719.</div>
-</div>
-</div>
+
+
+    </div>
+
+<script>
+/* Troca de abas */
+document.querySelectorAll(".aba").forEach(btn=>{
+    btn.onclick = ()=> {
+        document.querySelectorAll(".aba").forEach(a=>a.classList.remove("active"));
+        btn.classList.add("active");
+
+        let alvo = btn.getAttribute("data-target");
+        document.querySelectorAll(".card").forEach(div=>div.style.display="none");
+        document.getElementById(alvo).style.display="block";
+    };
+});
+
+/* Marcar e riscar */
+function marca(id){
+    const el = document.getElementById(id);
+    el.classList.add("marcado");
+    el.classList.remove("riscado");
+}
+
+function risca(id){
+    const el = document.getElementById(id);
+    el.classList.remove("marcado");
+    el.classList.add("riscado");
+}
+
+/* Alternância dos painéis */
+const painelL = document.getElementById("lembreteBox");
+const painelR = document.getElementById("ramalBox");
+const painelI = document.getElementById("infoExtrasBox");
+
+document.getElementById("lembreteBtn").onclick = ()=>{
+    painelL.style.display = painelL.style.display === "block" ? "none" : "block";
+    painelR.style.display = "none";
+    painelI.style.display = "none";
+};
+
+document.getElementById("ramalBtn").onclick = ()=>{
+    painelR.style.display = painelR.style.display === "block" ? "none" : "block";
+    painelL.style.display = "none";
+    painelI.style.display = "none";
+};
+
+document.getElementById("infoExtrasBtn").onclick = ()=>{
+    painelI.style.display = painelI.style.display === "block" ? "none" : "block";
+    painelL.style.display = "none";
+    painelR.style.display = "none";
+};
+
+/* Acordeão (Info Extras) */
+function abreExtra(id){
+    const el = document.getElementById(id);
+    el.style.display = el.style.display === "block" ? "none" : "block";
+}
+</script>
+
+
+
+
 <style>
 /* RESPONSIVIDADE PARA CELULAR */
 @media (max-width: 600px) {
