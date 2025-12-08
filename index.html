@@ -236,6 +236,7 @@
 
             <button class="reset-btn" onclick="resetarChecklist()">Reiniciar Checklist</button>
         </div>
+        
     </header>
 
     <!-- COMPROMISSÁRIO -->
@@ -354,90 +355,7 @@
         </div>
     </section>
 
-<script>
-    const btn = document.getElementById("lembreteBtn");
-    const box = document.getElementById("lembreteBox");
 
-    btn.onclick = () => {
-        box.style.display = box.style.display === "none" ? "block" : "none";
-    };
-</script>
-
-<!-- BOTÃO QR CODE (estilo do seu site) -->
-<style>
-.qr-btn {
-    padding: 10px 14px;
-    background: #006b8f;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 15px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-right: 10px;
-}
-.qr-btn:hover { background: #0088b8; }
-
-/* Painel QR */
-#qrBox {
-    position: fixed;
-    right: 10px;
-    bottom: 60px;
-    width: 260px;
-    background: white;
-    border: 2px solid #0088b8;
-    border-radius: 12px;
-    padding: 14px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
-    display: none;
-    z-index: 9999;
-    font-size: 14px;
-}
-
-#qrBox h3 {
-    margin: 0 0 10px 0;
-    color: #006b8f;
-    font-size: 17px;
-}
-
-.qr-btn-open {
-    width: 100%;
-    background: #0a3a50;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    padding: 10px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.qr-btn-open:hover {
-    background: #0f5677;
-}
-</style>
-
-<div id="qrBox">
-    <h3>Gerador de QR Code</h3>
-
-    Facilite o atendimento gerando códigos rápidos com:
-    <br>– E-mails  
-    <br>– Textos  
-    <br>– Listas de documentos  
-    <br>– Links úteis
-
-    <br><br>
-
-    <button class="qr-btn-open" onclick="window.location.href='qrcode.html'">
-        Abrir Gerador
-    </button>
-</div>
-
-<script>
-function abrirPainelQR() {
-    const box = document.getElementById("qrBox");
-    box.style.display = box.style.display === "none" ? "block" : "none";
-}
-</script>
 
 
 <!-- BOTÃO RAMAL -->
