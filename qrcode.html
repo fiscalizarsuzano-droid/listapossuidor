@@ -134,6 +134,8 @@ cadastro.imobiliario@suzano.sp.gov.br</textarea>
 
     <button onclick="gerarQR()">Gerar QR Code</button>
     <button onclick="imprimirQR()">Imprimir QR Code</button>
+    <button onclick="baixarPNG()">Baixar QR Code (PNG)</button>
+
 
     <div id="qrcode"></div>
 
@@ -144,39 +146,82 @@ cadastro.imobiliario@suzano.sp.gov.br</textarea>
 </div>
 
 <script>
-function gerarQR() {
-    const texto = document.getElementById("conteudo").value;
+function limparTexto(texto) {
+    // Mantém quebras de linha e remove caractere invisível
+    return texto.replace(/\r/g, "").replace(/\n/g, "\n").trim();
+}
 
+function gerarQR() {
+    const textoOriginal = document.getElementById("conteudo").value;
+    const modo = document.getElementById("modo") ? document.getElementById("modo").value : "texto";
+
+    // Limpa e mantém linhas
+    let textoLimpo = limparTexto(textoOriginal);
+    let textoFinal = textoLimpo;
+
+    // Modo WhatsApp
+    if (modo === "whatsapp") {
+        textoFinal = "https://wa.me/?text=" + encodeURIComponent(textoLimpo);
+    }
+
+    // Modo e-mail
+    if (modo === "email") {
+        textoFinal = "mailto:?subject=Informações&body=" + encodeURIComponent(textoLimpo);
+    }
+
+    // Modo link — usa o texto como URL
+    if (modo === "link") {
+        textoFinal = textoLimpo;
+    }
+
+    // Limpa áreas
     document.getElementById("qrcode").innerHTML = "";
     document.getElementById("printArea").innerHTML = "";
 
-    const textoLimpo = texto.replace(/\r?\n/g, "\n");
-
+    // Cria QR na tela
     const qrContainer = document.getElementById("qrcode");
     const qr = new QRCode(qrContainer, {
-        text: textoLimpo,
+        text: textoFinal,
         width: 240,
-        height: 240
+        height: 240,
+        correctLevel: QRCode.CorrectLevel.H
     });
 
-    // Copia para a área de impressão após um pequeno delay
+    // Copia para printArea e prepara para download
     setTimeout(() => {
-        const qrImg = qrContainer.querySelector("img") || qrContainer.querySelector("canvas");
-        if (qrImg) {
-            const clone = qrImg.cloneNode(true);
+        const img = qrContainer.querySelector("img") || qrContainer.querySelector("canvas");
+        if (img) {
+            const clone = img.cloneNode(true);
             document.getElementById("printArea").appendChild(clone);
         }
     }, 250);
 }
 
+// ---- DOWNLOAD PNG ----
+function baixarPNG() {
+    const qrImg = document.querySelector("#qrcode img");
+
+    if (!qrImg) {
+        alert("Gere o QR Code primeiro!");
+        return;
+    }
+
+    const link = document.createElement("a");
+    link.download = "qrcode.png";
+    link.href = qrImg.src;
+    link.click();
+}
+
+// ---- IMPRESSÃO ----
 function imprimirQR() {
-    if (!document.querySelector("#printArea img") && !document.querySelector("#printArea canvas")) {
+    if (!document.querySelector("#printArea img")) {
         alert("Gere o QR Code primeiro!");
         return;
     }
     window.print();
 }
 </script>
+
 
 </body>
 </html>
