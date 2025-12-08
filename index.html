@@ -220,7 +220,7 @@
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('c1')">✓</div><div id="c1" class="label">Espelho de IPTU</div><div class="ctrl-right" onclick="riscarTexto('c1')">✕</div></div>
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('c2')">✓</div><div id="c2" class="label">Documentos Pessoais (RG e CPF)</div><div class="ctrl-right" onclick="riscarTexto('c2')">✕</div></div>
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('c3')">✓</div><div id="c3" class="label">Comprovante de Endereço</div><div class="ctrl-right" onclick="riscarTexto('c3')">✕</div></div>
-            <div class="item"><div class="ctrl-left" onclick="marcarTexto('c4')">✓</div><div id="c4" class="label">Sequência de documentos a partir do nome que consta no IPTU (matrícula, contrato etc.)</div><div class="ctrl-right" onclick="riscarTexto('c4')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('c4')">✓</div><div id="c4" class="label">Contrato de compra e venda ou escritura (Seguência de documentos a partir do nome que está no carnê de IPTU)</div><div class="ctrl-right" onclick="riscarTexto('c4')">✕</div></div>
         </div>
     </section>
 
@@ -229,7 +229,7 @@
         <h2 style="color:var(--text)">Alteração de Proprietário</h2>
         <div class="card">
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('p1')">✓</div><div id="p1" class="label">Apresentar a Matrícula Atualizada</div><div class="ctrl-right" onclick="riscarTexto('p1')">✕</div></div>
-            <div class="item"><div class="ctrl-left" onclick="marcarTexto('p3')">✓</div><div id="p3" class="label">Espelho de IPTU</div><div class="ctrl-right" onclick="riscarTexto('p3')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('p3')">✓</div><div id="p3" class="label">Espelho de IPTU se possível</div><div class="ctrl-right" onclick="riscarTexto('p3')">✕</div></div>
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('p4')">✓</div><div id="p4" class="label">Documentos Pessoais (RG e CPF)</div><div class="ctrl-right" onclick="riscarTexto('p4')">✕</div></div>
         </div>
     </section>
@@ -241,11 +241,13 @@
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('r2')">✓</div><div id="r2" class="label">Espelho de IPTU</div><div class="ctrl-right" onclick="riscarTexto('r2')">✕</div></div>
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('r3')">✓</div><div id="r3" class="label">Documentos Pessoais (RG e CPF)</div><div class="ctrl-right" onclick="riscarTexto('r3')">✕</div></div>
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('r4')">✓</div><div id="r4" class="label">Comprovante de Endereço</div><div class="ctrl-right" onclick="riscarTexto('r4')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('r5')">✓</div><div id="r5" class="label">Documento do Imóvel</div><div class="ctrl-right" onclick="riscarTexto('r5')">✕</div></div>
             <div class="nota">Observação: seguir a mesma regra - se o nome do requerente não consta no IPTU, apresentar sequência documental do titular.</div>
+            <div class="nota">Cadastramento de Área, entrar em contato com Secretaria do planejamento .</div>
         </div>
     </section>
 
-    <!-- SUBUNIDADES -->
+    <!-- SUB-UNIDADES -->
     <section id="conteudo-subunidades" class="conteudo" style="display:none">
         <h2 style="color:var(--text)">Lançamento / Exclusão de Subunidades</h2>
         <div class="card">
@@ -266,7 +268,8 @@
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('d4')">✓</div><div id="d4" class="label">Comprovante de Endereço</div><div class="ctrl-right" onclick="riscarTexto('d4')">✕</div></div>
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('d5')">✓</div><div id="d5" class="label">Matrícula desdobrada e/ou Certidão de Desdobro e croqui</div><div class="ctrl-right" onclick="riscarTexto('d5')">✕</div></div>
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('d6')">✓</div><div id="d6" class="label">Sequência de contratos de compra e venda (se aplicável)</div><div class="ctrl-right" onclick="riscarTexto('d6')">✕</div></div>
-            <div class="item"><div class="ctrl-left" onclick="marcarTexto('d7')">✓</div><div id="d7" class="label">Certidão Negativa de Débitos Imobiliários</div><div class="ctrl-right" onclick="riscarTexto('d7')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('d7')">✓</div><div id="d7" class="label">Certidão Negativa de Débitos Imobiliários, NÃO PODE POSSUIR DEBITOS IMOBILIÁRIOS</div><div class="ctrl-right" onclick="riscarTexto('d7')">✕</div></div>
+            <div class="nota">Caso o desdobro for de área maior anexar croqui e Planta planialtimétrica para localização.</div>
         </div>
     </section>
 
@@ -274,11 +277,10 @@
     <section id="conteudo-certidoes" class="conteudo" style="display:none">
         <h2 style="color:var(--text)">Certidões</h2>
         <div class="card">
-            <div class="item"><div class="ctrl-left" onclick="marcarTexto('ce1')">✓</div><div id="ce1" class="label">Especificação da solicitação e certidão requerida</div><div class="ctrl-right" onclick="riscarTexto('ce1')">✕</div></div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('ce1')">✓</div><div id="ce1" class="label">Especificação da certidão requerida</div><div class="ctrl-right" onclick="riscarTexto('ce1')">✕</div></div>
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('ce2')">✓</div><div id="ce2" class="label">Espelho de IPTU</div><div class="ctrl-right" onclick="riscarTexto('ce2')">✕</div></div>
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('ce3')">✓</div><div id="ce3" class="label">Documentos Pessoais (RG e CPF)</div><div class="ctrl-right" onclick="riscarTexto('ce3')">✕</div></div>
-            <div class="item"><div class="ctrl-left" onclick="marcarTexto('ce4')">✓</div><div id="ce4" class="label">Comprovante de Endereço</div><div class="ctrl-right" onclick="riscarTexto('ce4')">✕</div></div>
-            <div class="nota">Em caso do nome do requerente não constar no IPTU: apresentar sequência de documentos a partir do nome que consta no IPTU.</div>
+            <div class="item"><div class="ctrl-left" onclick="marcarTexto('ce4')">✓</div><div id="ce4" class="label">DOCUMENTOS DO IMÓVEL (CASO O NOME DO SOLICITANTE NÃO CONSTE NO ESPELHO DE IPTU)</div><div class="ctrl-right" onclick="riscarTexto('ce4')">✕</div></div>
         </div>
     </section>
 
@@ -288,7 +290,6 @@
         <div class="card">
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('co1')">✓</div><div id="co1" class="label">Espelho de IPTU da área maior (matriz)</div><div class="ctrl-right" onclick="riscarTexto('co1')">✕</div></div>
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('co2')">✓</div><div id="co2" class="label">Documentos Pessoais (RG e CPF)</div><div class="ctrl-right" onclick="riscarTexto('co2')">✕</div></div>
-            <div class="item"><div class="ctrl-left" onclick="marcarTexto('co3')">✓</div><div id="co3" class="label">Comprovante de Endereço</div><div class="ctrl-right" onclick="riscarTexto('co3')">✕</div></div>
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('co4')">✓</div><div id="co4" class="label">Matrícula mãe (área maior)</div><div class="ctrl-right" onclick="riscarTexto('co4')">✕</div></div>
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('co5')">✓</div><div id="co5" class="label">Matrículas individualizadas</div><div class="ctrl-right" onclick="riscarTexto('co5')">✕</div></div>
             <div class="item"><div class="ctrl-left" onclick="marcarTexto('co6')">✓</div><div id="co6" class="label">Memorial de Cálculo das Unidades (NBR)</div><div class="ctrl-right" onclick="riscarTexto('co6')">✕</div></div>
