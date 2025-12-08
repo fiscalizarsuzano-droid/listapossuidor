@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <title>Gerador de QR Code – Cadastro Imobiliário</title>
 
-<!-- Biblioteca QRCode.js -->
+<!-- Biblioteca do QR Code -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
@@ -16,7 +16,7 @@
     }
 
     .container {
-        max-width: 520px;
+        max-width: 600px;
         margin: auto;
         background: white;
         padding: 20px;
@@ -27,21 +27,34 @@
     h1 {
         text-align: center;
         color: #003b5c;
+        margin-top: 0;
+    }
+
+    h2 {
+        color: #0a3a50;
+        margin-bottom: 6px;
     }
 
     textarea {
         width: 100%;
-        height: 120px;
         padding: 12px;
         font-size: 14px;
         border: 1px solid #97b7c7;
         border-radius: 6px;
         resize: none;
+        margin-bottom: 15px;
+    }
+
+    #desc {
+        height: 80px;
+    }
+
+    #conteudo {
+        height: 120px;
     }
 
     button {
         width: 100%;
-        margin-top: 10px;
         padding: 12px;
         background: #0a3a50;
         color: white;
@@ -56,20 +69,14 @@
     }
 
     #qrcode {
-        margin-top: 20px;
+        margin-top: 25px;
         text-align: center;
-    }
-
-    .info {
-        font-size: 14px;
-        color: #23506e;
-        margin-bottom: 12px;
     }
 
     .voltar {
         display: block;
         text-align: center;
-        margin-top: 25px;
+        margin-top: 30px;
         color: #0a3a50;
         font-weight: bold;
         text-decoration: none;
@@ -81,16 +88,13 @@
 <div class="container">
     <h1>Gerador de QR Code</h1>
 
-    <div class="info">
-        Gere um QR Code para facilitar o compartilhamento de informações como:
-        <br><br>
-        • Lista de documentos<br>
-        • E-mails de atendimento<br>
-        • Instruções rápidas<br>
-        • Links importantes
-    </div>
+    <!-- 🟦 PARTE 1 — EXPLICAÇÃO -->
+    <h2>Sobre este QR Code</h2>
+    <textarea id="desc" placeholder="Exemplo: QR Code para facilitar que o contribuinte copie o e-mail do setor de Cadastro Imobiliário."></textarea>
 
-    <textarea id="textoQR">E-MAIL – CADASTRO IMOBILIÁRIO
+    <!-- 🟩 PARTE 2 — TEXTO QUE VIRA QR CODE -->
+    <h2>Conteúdo do QR Code</h2>
+    <textarea id="conteudo">E-MAIL – CADASTRO IMOBILIÁRIO
 cadastro.imobiliario@suzano.sp.gov.br</textarea>
 
     <button onclick="gerarQR()">Gerar QR Code</button>
@@ -102,15 +106,18 @@ cadastro.imobiliario@suzano.sp.gov.br</textarea>
 
 <script>
 function gerarQR() {
-    const texto = document.getElementById("textoQR").value.trim();
-    const area = document.getElementById("qrcode");
+    const texto = document.getElementById("conteudo").value;
 
-    area.innerHTML = ""; // limpa o QR antigo
+    // limpa QR antigo
+    document.getElementById("qrcode").innerHTML = "";
 
-    new QRCode(area, {
-        text: texto,
-        width: 220,
-        height: 220
+    // garante que aceita quebras de linha
+    const textoLimpo = texto.replace(/\r?\n/g, "\n");
+
+    new QRCode(document.getElementById("qrcode"), {
+        text: textoLimpo,
+        width: 230,
+        height: 230
     });
 }
 </script>
