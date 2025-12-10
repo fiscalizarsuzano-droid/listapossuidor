@@ -179,7 +179,7 @@
         }
         
         /* Painel de lembretes */
-        #lembreteBox {
+        #aba-qrcode {
             position: fixed;
             right: 10px;
             bottom: 10px;
@@ -238,7 +238,7 @@
         }
         
         /* Hover ainda mais forte */
-        #btnQR:hover {
+        #aba-qrcode:hover {
             box-shadow:
                 0 0 10px #00eaff,
                 0 0 20px #00eaff,
@@ -302,7 +302,8 @@
     <div id="aba-cadastramento" class="aba" onclick="abrirAba('cadastramento')"><span>Cadastramento de Área</span><span class="tag">#CA</span></div>
     <div id="aba-possuidor" class="aba" onclick="abrirAba('possuidor')"><span>Cadastro de Possuidor</span><span class="tag">#CP</span></div>
 
-    <button id="aba-qrcode" class="lembreteBox" onclick="window.location.href='qrcode.html'">Gerar Code #QR</button>
+    <button id="aba-qrcode" onclick="window.location.href='qrcode.html'">
+    Gerar Code #QR</button>
 
 </div>
 
