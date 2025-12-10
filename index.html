@@ -182,17 +182,72 @@
         #lembreteBox {
             position: fixed;
             right: 10px;
-            bottom: 60px;
-            width: 260px;
-            height: 200px;
-            background: white;
-            border: 2px solid #4b7bd9;
-            border-radius: 12px;
-            padding: 10px;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
-            display: none; /* escondido inicialmente */
+            bottom: 10px;
+            padding: 12px 22px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background: #0d0f1a;
+            border: 2px solid #00eaff;
+            border-radius: 10px;
+            cursor: pointer;
             z-index: 9999;
+            text-shadow: 0 0 8px #00eaff;
+            box-shadow:
+                0 0 5px #00eaff,
+                0 0 10px #00eaff,
+                inset 0 0 10px #00eaff;
+        
+            /* Animações */
+            animation:
+                neonPulse 2.2s infinite alternate,
+                glitchBorder 3.5s infinite;
         }
+        
+        /* Efeito de brilho pulsante */
+        @keyframes neonPulse {
+            0% {
+                box-shadow:
+                    0 0 4px #00eaff,
+                    0 0 8px #00eaff,
+                    inset 0 0 6px #00eaff;
+            }
+            50% {
+                box-shadow:
+                    0 0 8px #00eaff,
+                    0 0 16px #00eaff,
+                    inset 0 0 12px #00eaff;
+            }
+            100% {
+                box-shadow:
+                    0 0 3px #00eaff,
+                    0 0 6px #00eaff,
+                    inset 0 0 4px #00eaff;
+            }
+        }
+        
+        /* Efeito “falha/glitch” alternando cores e bordas */
+        @keyframes glitchBorder {
+            0%   { border-color: #00eaff; }
+            25%  { border-color: #ff00ff; }
+            35%  { border-color: #00eaff; }
+            55%  { border-color: #ff0090; }
+            70%  { border-color: #00eaff; }
+            85%  { border-color: #ff00ff; }
+            100% { border-color: #00eaff; }
+        }
+        
+        /* Hover ainda mais forte */
+        #btnQR:hover {
+            box-shadow:
+                0 0 10px #00eaff,
+                0 0 20px #00eaff,
+                inset 0 0 15px #00eaff,
+                0 0 20px #ff00ff;
+            transform: scale(1.03);
+            transition: 0.2s;
+        }
+
         
         /* Área de texto */
         #lembreteText {
