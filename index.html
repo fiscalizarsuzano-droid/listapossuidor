@@ -177,7 +177,34 @@
             cursor: pointer;
             z-index: 9999;
         }
+        
+        /* Painel de lembretes */
+        #lembreteBox {
+            position: fixed;
+            right: 10px;
+            bottom: 60px;
+            width: 260px;
+            height: 200px;
+            background: white;
+            border: 2px solid #4b7bd9;
+            border-radius: 12px;
+            padding: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            display: none; /* escondido inicialmente */
+            z-index: 9999;
+        }
+        
+        /* Área de texto */
+        #lembreteText {
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            resize: none;
+            font-size: 14px;
+        }
 </style>
+
 <script>
     // Abas e controle
     function abrirAba(nome){
@@ -219,10 +246,11 @@
     <div id="aba-condominio" class="aba" onclick="abrirAba('condominio')"><span>Individualização Condomínio</span><span class="tag">#IC</span></div>
     <div id="aba-cadastramento" class="aba" onclick="abrirAba('cadastramento')"><span>Cadastramento de Área</span><span class="tag">#CA</span></div>
     <div id="aba-possuidor" class="aba" onclick="abrirAba('possuidor')"><span>Cadastro de Possuidor</span><span class="tag">#CP</span></div>
-    <div id="aba-qrcode" class="lembreteBtn" onclick="window.location.href='qrcode.html'">
-           <span>Gerar QR Code</span>
-           <span class="tag">#QR</span>
+    <div id="aba-qrcode" class="aba" onclick="window.location.href='qrcode.html'">
+            <span>Gerar QR Code</span>
+            <span class="tag">#QR</span>
     </div>
+
 </div>
 
 <div class="area">
@@ -232,11 +260,8 @@
             <div class="sub">Clique no quadrado à esquerda para marcar como entregue. Clique à direita para riscar e indicar falta.</div>
         </div>
         <div>
-            <button id="qrBtn" class="qr-btn" onclick="abrirPainelQR()">Gerar QR Code</button>
-
             <button class="reset-btn" onclick="resetarChecklist()">Reiniciar Checklist</button>
         </div>
-        
     </header>
 
     <!-- COMPROMISSÁRIO -->
@@ -355,7 +380,14 @@
         </div>
     </section>
 
+<script>
+    const btn = document.getElementById("lembreteBtn");
+    const box = document.getElementById("lembreteBox");
 
+    btn.onclick = () => {
+        box.style.display = box.style.display === "none" ? "block" : "none";
+    };
+</script>
 
 
 <!-- BOTÃO RAMAL -->
