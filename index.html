@@ -612,6 +612,32 @@
         • Watzap Sonner: 97317-3725...<br><br>        
         
 </div>
+    <!-- BOTÃO galeria -->    
+<button id="galeriaBtn" style="
+    position: fixed;
+    right: 10px;
+    bottom: 160px; /* ajusta a altura */
+    padding: 10px 14px;
+    background: #ff9800;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 9999;
+">
+📷 Galeria
+</button>
+
+<script>
+document.getElementById("galeriaBtn").onclick = () => {
+    window.open(
+        'galeria.html',
+        'galeria',
+        'width=1000,height=700'
+    );
+};
+</script>
 
                 <!-- BOTÃO INFO EXTRAS -->
         <button id="infoExtrasBtn" style="
