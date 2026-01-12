@@ -267,6 +267,32 @@
             resize: none;
             font-size: 14px;
         }
+        /*Botão certidão */
+        .btn-certidao {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+            width: 100%;
+            height: 60px;
+        
+            background-color: var(--primary, #2c7be5);
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+        
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+        
+        .btn-certidao:hover {
+            background-color: #1a5fd0;
+            transform: translateY(-2px);
+        }
+
+        
 </style>
 
 <script>
@@ -439,6 +465,18 @@
             <div class="nota">Caso julgue necessário o setor responsável poderá solicitar originais ou documentos complementares. Em caso de solicitação por terceiros, anexar procuração ou documentos que comprovem vínculo com o proprietário/requerente.</div>
         </div>
     </section>
+
+        
+    <section id="" class="conteudo" style="display:none">
+            <h2 style="color:var(--text)">CERTIDÃO</h2>
+        
+            <div class="card">
+                <a href="certidao.html" class="btn-certidao" aria-label="Acessar Certidão">
+                    CERTIDÃO
+                </a>
+            </div>
+     </section>
+
 
 <!-- BOTÃO QrCode -->
 <button id="aba-qrcode" onclick="window.location.href='qrcode.html'">
