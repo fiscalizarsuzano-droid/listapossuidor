@@ -1008,21 +1008,31 @@ ramalBtn.onclick = () => {
 
 /* script comeia */
 <script>
-function toggleFab() {
-    document.querySelector('.fab-container').classList.toggle('open');
-}
-
-/* Integração com seus painéis existentes */
-function toggleRamal() {
-    const box = document.getElementById('ramalBox');
-    box.style.display = box.style.display === 'block' ? 'none' : 'block';
-}
-
-function toggleInfoExtras() {
-    const box = document.getElementById('infoExtrasBox');
-    box.style.display = box.style.display === 'block' ? 'none' : 'block';
-}
+        /* ===== AÇÕES CENTRAIS ===== */
+        
+        function abrirCertidao() {
+            window.location.href = 'certidao.html';
+        }
+        
+        function abrirQRCode() {
+            window.location.href = 'qrcode.html';
+        }
+        
+        function abrirGaleria() {
+            window.open('galeria.html', 'galeria', 'width=1000,height=700');
+        }
+        
+        function abrirRamais() {
+            const box = document.getElementById('ramalBox');
+            box.style.display = box.style.display === 'block' ? 'none' : 'block';
+        }
+        
+        function abrirInfoExtras() {
+            const box = document.getElementById('infoExtrasBox');
+            box.style.display = box.style.display === 'block' ? 'none' : 'block';
+        }
 </script>
+
 
 
 </div>
