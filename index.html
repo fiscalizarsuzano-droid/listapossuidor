@@ -1096,12 +1096,12 @@
         const el = document.getElementById(id);
         el.style.display = el.style.display === 'block' ? 'none' : 'block';
     }
+    
 // Abrir PDF manual
     function abrirPDFNovaAba() {
-    window.open('manual-cadastro-imobiliario.pdf');  // ← Troque aqui
+    window.open('manual-cadastro-imobiliario.pdf', '_blank');  // ← Troque aqui
     }
 
-    
     function baixarPDF() {
         const link = document.createElement('a');
         link.href = 'manual-cadastro-imobiliario.pdf';
