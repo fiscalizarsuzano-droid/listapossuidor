@@ -736,12 +736,12 @@
     
     <div class="fab-actions">
         <button class="fab-btn" onclick="abrirRamais()">📞 Ramais</button>
+        <button class="fab-btn" onclick="painelInfoExtras()">📚 Infos</button>
         <button class="fab-btn"
-                style="background: #2196F3; border-color: #1976D2; color: white;"
-                onclick="event.stopPropagation(); abrirPDFPainel();">
+                style="background: #2196F3; color: white;"
+                onclick="abrirPDFPainel(event)">
             📄 Visualizar Manual
         </button>
-        <button class="fab-btn" onclick="painelInfoExtras()">📚 manual</button>    
         <button class="fab-btn" onclick="abrirGaleria()">📷 Galeria</button>
         <button class="fab-btn" onclick="abrirQRCode()">📳 QR Code</button>
         <button class="fab-btn" onclick="abrirCertidao()">📄 Certidão</button>
@@ -899,7 +899,11 @@
             style="width:100%; height: calc(100% - 50px); border:none; border-radius:8px;">
     </iframe>
 </div>
-
+<script>
+document.getElementById('painelPDF').addEventListener('click', function(e) {
+    e.stopPropagation();
+});
+</script>
     
 <!-- ===== PAINEL INFO EXTRAS ===== -->
 <div id="painelInfoExtras" class="painel-flutuante">
@@ -1102,7 +1106,9 @@
     }
     
                                           // Abrir PDF manual
-    function abrirPDFPainel() {
+    function abrirPDFPainel(event) {
+        event.stopPropagation(); // ⛔ impede fechamento automático
+    
         fecharTodosPaineis();
     
         const iframe = document.getElementById('iframePDF');
