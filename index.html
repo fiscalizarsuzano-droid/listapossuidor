@@ -885,7 +885,7 @@
     <!-- ESTE É O BOTÃO AZUL DE ABRIR -->
     <button class="ex-btn" 
             style="background: #2196F3; border-color: #1976D2; color: white; font-size: 15px; padding: 12px;" 
-            onclick="abrirPDF()">
+            onclick="abrirPDFNovaAb()">
         🔗 Abrir PDF em Nova Aba
     </button>
     
@@ -1096,23 +1096,21 @@
         const el = document.getElementById(id);
         el.style.display = el.style.display === 'block' ? 'none' : 'block';
     }
-
+// Abrir PDF manual
     function abrirPDFNovaAba() {
-    window.open('SEU-ARQUIVO.pdf', '_blank');  // ← Troque aqui
+    window.open('manual-cadastro-imobiliario.pdf');  // ← Troque aqui
     }
 
-    // Abrir PDF manual
+    
     function baixarPDF() {
         const link = document.createElement('a');
-        link.href = 'manual-cadastro-imobiliario.pdf';  // ← E aqui
-        link.download = 'manual-cadastro-imobiliario.pdf';  // ← Nome ao baixar
+        link.href = 'manual-cadastro-imobiliario.pdf';
+        link.download = 'manual-cadastro-imobiliario.pdf';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
     }
-    function abrirPDF() {
-    window.open('manual-cadastro-imobiliario.pdf', '_blank');
-    }
+
 
     // Fechar painéis ao clicar fora
     document.addEventListener('click', (e) => {
