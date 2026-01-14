@@ -729,24 +729,7 @@
     </section>
 </div>
 
-<!-- ===== PAINEL MANUAL DO SISTEMA ===== -->
-<div id="painelManual" class="painel-flutuante">
-    <h3>📖 Manual do Sistema Sonner</h3>
-    
-    <!-- ESTE É O BOTÃO AZUL DE ABRIR -->
-    <button class="ex-btn" 
-            style="background: #2196F3; border-color: #1976D2; color: white; font-size: 15px; padding: 12px;" 
-            onclick="abrirPDFNovaAba()">
-        🔗 Abrir PDF em Nova Aba
-    </button>
-    
-    <!-- ESTE É O BOTÃO VERDE DE BAIXAR -->
-    <button class="ex-btn" 
-            style="background: #4CAF50; border-color: #45a049; color: white; font-size: 15px; padding: 12px; margin-top: 8px;" 
-            onclick="baixarPDF()">
-        💾 Baixar Manual (PDF)
-</button>
-    
+   
 <!-- ===== MENU FLUTUANTE SMARTWATCH ===== -->
 <div class="fab-container">
     <button class="fab-main" onclick="toggleFab()">☰</button>
@@ -754,6 +737,7 @@
     <div class="fab-actions">
         <button class="fab-btn" onclick="abrirRamais()">📞 Ramais</button>
         <button class="fab-btn" onclick="abrirInfoExtras()">📚 Info Extras</button>
+        <button class="fab-btn" onclick="abrirmanual()">📚 manual</button>    
         <button class="fab-btn" onclick="abrirGaleria()">📷 Galeria</button>
         <button class="fab-btn" onclick="abrirQRCode()">📳 QR Code</button>
         <button class="fab-btn" onclick="abrirCertidao()">📄 Certidão</button>
@@ -895,6 +879,25 @@
     • Watzap Sonner: 97317-3725...</p>
 </div>
 
+<!-- ===== PAINEL MANUAL DO SISTEMA ===== -->
+<div id="abrirmanual" class="painel-flutuante">
+    <h3>📖 Manual do Sistema Sonner</h3>
+    
+    <!-- ESTE É O BOTÃO AZUL DE ABRIR -->
+    <button class="ex-btn" 
+            style="background: #2196F3; border-color: #1976D2; color: white; font-size: 15px; padding: 12px;" 
+            onclick="abrirPDFNovaAba()">
+        🔗 Abrir PDF em Nova Aba
+    </button>
+    
+    <!-- ESTE É O BOTÃO VERDE DE BAIXAR -->
+    <button class="ex-btn" 
+            style="background: #4CAF50; border-color: #45a049; color: white; font-size: 15px; padding: 12px; margin-top: 8px;" 
+            onclick="baixarPDF()">
+        💾 Baixar Manual (PDF)
+    </button>
+</div>
+    
 <!-- ===== PAINEL INFO EXTRAS ===== -->
 <div id="painelInfoExtras" class="painel-flutuante">
     <h3 style="color:#9c27b0;">📚 Informações Extras</h3>
