@@ -339,6 +339,34 @@
             line-height: 1.45;
         }
 
+        /* ===== config do Painel ===== */
+        #painelPDF {
+            width: 90vw;
+            height: 90vh;
+            max-width: 1200px;
+            max-height: 90vh;
+            overflow: hidden;
+        }
+        #iframePDF {
+        width: 100%;
+        height: 100%;
+        border: none;
+        }
+        #painelPDF {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #painelPDF .cabecalho {
+            flex: 0 0 auto;
+        }
+        
+        #painelPDF .conteudo {
+            flex: 1 1 auto;
+            overflow: hidden;
+        }
+
+        
         /* ===== RESPONSIVO ===== */
         @media (max-width: 900px) {
             .menu {
@@ -892,12 +920,9 @@
                 onclick="fecharPDF()">
             ✖ Fechar
         </button>
-    </div>
-
-    <iframe id="iframePDF"
-            src=""
-            style="width:100%; height: calc(100% - 50px); border:none; border-radius:8px;">
-    </iframe>
+</div>
+<iframe id="iframePDF"></iframe>
+    
 </div>
 <script>
 document.getElementById('painelPDF').addEventListener('click', function(e) {
