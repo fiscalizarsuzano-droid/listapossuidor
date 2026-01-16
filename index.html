@@ -365,6 +365,13 @@
                 max-height: 60vh;
             }
         }
+        /* ===== certidão slyde===== */
+        #slideImagem {
+        max-width: 90%;
+        max-height: 80vh;
+        display: block;
+        margin: auto;
+        }
     </style>
 </head>
 <body>
@@ -1232,46 +1239,31 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
         fecharTodosPaineis();
     
         const config = certidoes[tipo];
-        if (!config) return;
+        if (!config) {
+            console.error("Certidão não encontrada:", tipo);
+            return;
+        }
     
         imagensCertidao = [];
         slideAtual = 0;
     
-    for (let i = 1; i <= config.total; i++) {
-        const numero = String(i).padStart(2, '0'); // 01, 02, 03...
-        imagensCertidao.push(`imagem/${tipo}/${numero}.PNG`);
-    }
+        for (let i = 1; i <= config.total; i++) {
+            const numero = String(i).padStart(2, '0'); // 01, 02...
+            imagensCertidao.push(`./imagem/${tipo}/${numero}.PNG`);
+        }
     
-        document.getElementById('tituloCertidao').innerText = config.titulo;
-        document.getElementById('slideImagem').src = imagensCertidao[0];
+        const img = document.getElementById('slideImagem');
+        const titulo = document.getElementById('tituloCertidao');
+    
+        titulo.innerText = config.titulo;
+    
+        img.onerror = () => {
+            console.error("Erro ao carregar imagem:", img.src);
+        };
+    
+        img.src = imagensCertidao[0];
     
         document.getElementById('painelSlideCertidao').classList.add('show');
-    }
-    
-    /* Navegação */
-    function proximoSlide() {
-        if (slideAtual < imagensCertidao.length - 1) {
-            slideAtual++;
-            atualizarSlide();
-        }
-    }
-    
-    function slideAnterior() {
-        if (slideAtual > 0) {
-            slideAtual--;
-            atualizarSlide();
-        }
-    }
-    
-    function atualizarSlide() {
-        document.getElementById('slideImagem').src = imagensCertidao[slideAtual];
-    }
-    
-    /* Fechar */
-    function fecharSlideCertidao() {
-        document.getElementById('painelSlideCertidao').classList.remove('show');
-        imagensCertidao = [];
-        slideAtual = 0;
     }
 </script>
 
