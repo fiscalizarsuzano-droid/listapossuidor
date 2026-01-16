@@ -1185,46 +1185,69 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
         abrirAba('compromissario');
     });
 
-    // ===== Controle Certidão =====
+/* ===== CERTIDÕES – TUTORIAL DE IMAGENS ===== */
 
-    const certidoesSlides = {
-        "VALOR VENAL": [
-            "imagem/valor-venal/1.png",
-            "imagem/valor-venal/2.png"
-        ],
+    let imagensCertidao = [];
+    let slideAtual = 0;
     
-        "VALOR VENAL P/M² PNL": [
-            "imagem/valor-venal-m2/1.png",
-            "imagem/valor-venal-m2/2.png",
-            "imagem/valor-venal-m2/3.png"
-        ],
-    
-        "ORIGINÁRIA": [
-            "imagem/originaria/1.png"
-        ],
-    
-        "NEGATIVA DE PROPRIEDADE": [
-            "imagem/negativa-propriedade/1.png",
-            "imagem/negativa-propriedade/2.png"
-        ],
-    
-        "ÉPOCA DE LANÇAMENTO DE CONSTRUÇÃO": [
-            "imagem/epoca-lancamento/1.png",
-            "imagem/epoca-lancamento/2.png",
-            "imagem/epoca-lancamento/3.png",
-            "imagem/epoca-lancamento/4.png"
-        ],
-    
-        "CONFRONTAÇÕES": [
-            "imagem/confrontacoes/1.png",
-            "imagem/confrontacoes/2.png"
-        ]
+    /* Mapeamento simples:
+       chave = botão
+       valor = pasta + quantidade de imagens
+    */
+    const certidoes = {
+        "valor-venal": {
+            titulo: "📄 Certidão de Valor Venal",
+            total: 2
+        },
+        "valor-venal-m2": {
+            titulo: "📄 Valor Venal por m²",
+            total: 3
+        },
+        "originaria": {
+            titulo: "📄 Certidão Originária",
+            total: 1
+        },
+        "negativa-propriedade": {
+            titulo: "📄 Certidão Negativa de Propriedade",
+            total: 2
+        },
+        "epoca-lancamento": {
+            titulo: "📄 Época de Lançamento da Construção",
+            total: 4
+        },
+        "confrontacoes": {
+            titulo: "📄 Certidão de Confrontações",
+            total: 2
+        }
     };
-
-    function atualizarSlide() {
-        document.getElementById('slideImagem').src = imagensCertidao[slideAtual];
+    
+    /* Abrir painel principal */
+    function abrirCertidao() {
+        fecharTodosPaineis();
+        document.getElementById('painelCertidoes').classList.add('show');
     }
     
+    /* Abrir slideshow */
+    function abrirSlideCertidao(tipo) {
+        fecharTodosPaineis();
+    
+        const config = certidoes[tipo];
+        if (!config) return;
+    
+        imagensCertidao = [];
+        slideAtual = 0;
+    
+        for (let i = 1; i <= config.total; i++) {
+            imagensCertidao.push(`imagem/${tipo}/${i}.png`);
+        }
+    
+        document.getElementById('tituloCertidao').innerText = config.titulo;
+        document.getElementById('slideImagem').src = imagensCertidao[0];
+    
+        document.getElementById('painelSlideCertidao').classList.add('show');
+    }
+    
+    /* Navegação */
     function proximoSlide() {
         if (slideAtual < imagensCertidao.length - 1) {
             slideAtual++;
@@ -1239,10 +1262,16 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
         }
     }
     
-    function fecharSlideCertidao() {
-        document.getElementById('painelSlideCertidao').classList.remove('show');
+    function atualizarSlide() {
+        document.getElementById('slideImagem').src = imagensCertidao[slideAtual];
     }
     
+    /* Fechar */
+    function fecharSlideCertidao() {
+        document.getElementById('painelSlideCertidao').classList.remove('show');
+        imagensCertidao = [];
+        slideAtual = 0;
+    }
 </script>
 
 </body>
