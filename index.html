@@ -1028,6 +1028,56 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
     </div>
 </div>
 
+<!-- ===== PAINEL CERTIDÕES ===== -->
+<div id="painelCertidoes" class="painel-flutuante" style="width: 420px;">
+    <h3 style="color:#1c87bd;">📄 Certidões</h3>
+
+    <button class="ex-btn" onclick="abrirSlideCertidao('valor-venal')">
+        Certidão de Valor Venal
+    </button>
+
+    <button class="ex-btn" onclick="abrirSlideCertidao('valor-venal-m2')">
+        Certidão de Valor Venal p/ m² PNL
+    </button>
+
+    <button class="ex-btn" onclick="abrirSlideCertidao('originaria')">
+        Certidão Originária
+    </button>
+
+    <button class="ex-btn" onclick="abrirSlideCertidao('negativa-propriedade')">
+        Certidão Negativa de Propriedade
+    </button>
+
+    <button class="ex-btn" onclick="abrirSlideCertidao('epoca-lancamento')">
+        Certidão de Época de Lançamento de Construção
+    </button>
+
+    <button class="ex-btn" onclick="abrirSlideCertidao('confrontacoes')">
+        Certidão de Confrontações
+    </button>
+</div>
+
+<!-- ===== PAINEL SLIDES CERTIDÃO ===== -->
+<div id="painelSlideCertidao" class="painel-flutuante" style="width: 80vw; height: 80vh; max-height:none;">
+    <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h3 id="tituloCertidao">📘 Manual</h3>
+        <button class="ex-btn"
+                style="width:auto; background:#f44336; border-color:#d32f2f; color:white;"
+                onclick="fecharSlideCertidao()">✖ Fechar</button>
+    </div>
+
+    <div style="display:flex; align-items:center; justify-content:center; height: calc(100% - 60px); gap:10px;">
+        <button class="ctrl-left" onclick="slideAnterior()">‹</button>
+
+        <img id="slideImagem"
+             src=""
+             style="max-width:100%; max-height:100%; object-fit:contain; border-radius:8px;">
+
+        <button class="ctrl-right" onclick="proximoSlide()">›</button>
+    </div>
+</div>
+
+    
 <script>
     // ===== CONTROLE DE ABAS =====
     function abrirAba(nome) {
@@ -1138,6 +1188,65 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
     document.addEventListener('DOMContentLoaded', () => {
         abrirAba('compromissario');
     });
+
+    // ===== Controle Certidão =====
+
+    const certidoesSlides = {
+        "VALOR VENAL": [
+            "imagem/valor-venal/1.png",
+            "imagem/valor-venal/2.png"
+        ],
+    
+        "VALOR VENAL P/M² PNL": [
+            "imagem/valor-venal-m2/1.png",
+            "imagem/valor-venal-m2/2.png",
+            "imagem/valor-venal-m2/3.png"
+        ],
+    
+        "ORIGINÁRIA": [
+            "imagem/originaria/1.png"
+        ],
+    
+        "NEGATIVA DE PROPRIEDADE": [
+            "imagem/negativa-propriedade/1.png",
+            "imagem/negativa-propriedade/2.png"
+        ],
+    
+        "ÉPOCA DE LANÇAMENTO DE CONSTRUÇÃO": [
+            "imagem/epoca-lancamento/1.png",
+            "imagem/epoca-lancamento/2.png",
+            "imagem/epoca-lancamento/3.png",
+            "imagem/epoca-lancamento/4.png"
+        ],
+    
+        "CONFRONTAÇÕES": [
+            "imagem/confrontacoes/1.png",
+            "imagem/confrontacoes/2.png"
+        ]
+    };
+
+    function atualizarSlide() {
+        document.getElementById('slideImagem').src = imagensCertidao[slideAtual];
+    }
+    
+    function proximoSlide() {
+        if (slideAtual < imagensCertidao.length - 1) {
+            slideAtual++;
+            atualizarSlide();
+        }
+    }
+    
+    function slideAnterior() {
+        if (slideAtual > 0) {
+            slideAtual--;
+            atualizarSlide();
+        }
+    }
+    
+    function fecharSlideCertidao() {
+        document.getElementById('painelSlideCertidao').classList.remove('show');
+    }
+    
 </script>
 
 </body>
