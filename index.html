@@ -1265,6 +1265,24 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
     
         document.getElementById('painelSlideCertidao').classList.add('show');
     }
+    function proximoSlide() {
+    if (slideAtual < imagensCertidao.length - 1) {
+        slideAtual++;
+        document.getElementById('slideImagem').src = imagensCertidao[slideAtual];
+    }
+    }
+    
+    function slideAnterior() {
+        if (slideAtual > 0) {
+            slideAtual--;
+            document.getElementById('slideImagem').src = imagensCertidao[slideAtual];
+        }
+    }
+    
+    function fecharSlideCertidao() {
+        document.getElementById('painelSlideCertidao').classList.remove('show');
+        document.getElementById('slideImagem').src = '';
+    }
 </script>
 
 </body>
