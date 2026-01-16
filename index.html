@@ -742,7 +742,6 @@
                 onclick="abrirPDFPainel(event)">
             📄 Visualizar Manual
         </button>
-        <button class="fab-btn" onclick="abrirGaleria()">📷 Galeria</button>
         <button class="fab-btn" onclick="abrirQRCode()">📳 QR Code</button>
         <button class="fab-btn" onclick="abrirCertidao()">📄 Certidão</button>
     </div>
@@ -1085,10 +1084,6 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
     function abrirInfoExtras() {
         fecharTodosPaineis();
         document.getElementById('painelInfoExtras').classList.toggle('show');
-    }
-
-    function abrirGaleria() {
-        window.open('galeria.html', 'galeria', 'width=1000,height=700');
     }
 
     function abrirQRCode() {
