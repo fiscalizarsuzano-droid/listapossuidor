@@ -1237,9 +1237,10 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
         imagensCertidao = [];
         slideAtual = 0;
     
-        for (let i = 1; i <= config.total; i++) {
-            imagensCertidao.push(`imagem/${tipo}/${i}.PNG`);
-        }
+    for (let i = 1; i <= config.total; i++) {
+        const numero = String(i).padStart(2, '0'); // 01, 02, 03...
+        imagensCertidao.push(`imagem/${tipo}/${numero}.PNG`);
+    }
     
         document.getElementById('tituloCertidao').innerText = config.titulo;
         document.getElementById('slideImagem').src = imagensCertidao[0];
