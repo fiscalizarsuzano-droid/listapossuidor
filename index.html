@@ -1055,7 +1055,7 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
         Certidão Negativa de Propriedade
     </button>
 
-    <button class="ex-btn" onclick="abrirSlideCertidao('epoca-lancamento')">
+    <button class="ex-btn" onclick="abrirPDFInfoExtra('epoca-lancamento')">
         Certidão de Época de Lançamento de Construção
     </button>
 
@@ -1164,7 +1164,19 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
     
         document.getElementById('painelPDF').classList.add('show');
     }
+
+                                                        // tentartiva de painel simplificado    
+    function abrirPDFInfoExtra(event) {
+        event.stopPropagation(); //  impede fechamento automático
     
+        fecharTodosPaineis();
+    
+        const iframe = document.getElementById('iframePDF');
+        iframe.src = 'epoca.lancamento.pdf';
+    
+        document.getElementById('painelPDF').classList.add('show');
+    }
+                                                                 // ate aqui 
     function fecharPDF() {
         const iframe = document.getElementById('iframePDF');
         iframe.src = '';     // libera memória
