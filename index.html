@@ -1059,7 +1059,7 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
         Certidão de Época de Lançamento de Construção
     </button>
 
-    <button class="ex-btn" onclick="abrirSlideCertidao('confrontacoes')">
+    <button class="ex-btn" onclick="abrirPDFCertidao('confrontacoes')">
         Certidão de Confrontações
     </button>
 </div>
@@ -1174,7 +1174,16 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
     
         document.getElementById('painelPDF').classList.add('show');
     }
-                                                                 // ate aqui 
+                                                                 // confrontações
+        function abrirPDFCertidao(nomePDF) {
+        fecharTodosPaineis();
+    
+        const iframe = document.getElementById('iframePDF');
+        iframe.src = 'confrontacoes.pdf';  // ou use: nomePDF + '.pdf'
+    
+        document.getElementById('painelPDF').classList.add('show');
+    }
+                                                                // confrontações
     function fecharPDF() {
         const iframe = document.getElementById('iframePDF');
         iframe.src = '';     // libera memória
