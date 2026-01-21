@@ -1201,6 +1201,98 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
     document.addEventListener('DOMContentLoaded', () => {
         abrirAba('compromissario');
     });
+/* ===== CERTIDÕES – TUTORIAL DE IMAGENS ===== */
+
+    let imagensCertidao = [];
+    let slideAtual = 0;
+    
+    /* Mapeamento simples:
+       chave = botão
+       valor = pasta + quantidade de imagens
+    */
+    const certidoes = {
+        "valor-venal": {
+            titulo: "📄 Certidão de Valor Venal",
+            total: 2
+        },
+        "valor-venal-m2": {
+            titulo: "📄 Valor Venal por m²",
+            total: 3
+        },
+        "originaria": {
+            titulo: "📄 Certidão Originária",
+            total: 1
+        },
+        "negativa-propriedade": {
+            titulo: "📄 Certidão Negativa de Propriedade",
+            tipo: "html",  // ← MUDOU PARA HTML
+            total: 2
+        },
+        "epoca-lancamento": {
+            titulo: "📄 Época de Lançamento da Construção",
+            total: 9
+        },
+        "confrontacoes": {
+            titulo: "📄 Certidão de Confrontações",
+            total: 2
+        }
+    };
+    
+    /* Abrir painel principal */
+    function abrirCertidao() {
+        fecharTodosPaineis();
+        document.getElementById('painelCertidoes').classList.add('show');
+    }
+    
+    /* Abrir slideshow */
+    function abrirSlideCertidao(tipo) {
+        fecharTodosPaineis();
+    
+        const config = certidoes[tipo];
+        if (!config) {
+            console.error("Certidão não encontrada:", tipo);
+            return;
+        }
+    
+        // Se for PDF ou HTML
+        if (config.tipo === "pdf" || config.tipo === "html") {
+            const iframe = document.getElementById('iframePDF');
+            
+            // Para PDF: carrega da pasta pdfs/
+            // Para HTML: carrega do mesmo nível do index.html
+            if (config.tipo === "pdf") {
+                iframe.src = './pdfs/' + config.arquivo;
+            } else {
+                iframe.src = './' + config.arquivo;  // mesmo nível
+            }
+            
+            const tituloPDF = document.querySelector('#painelPDF h3');
+            tituloPDF.innerHTML = config.titulo;
+            
+            document.getElementById('painelPDF').classList.add('show');
+        } else {
+            // Código para imagens (mantido para compatibilidade)
+            imagensCertidao = [];
+            slideAtual = 0;
+    
+            for (let i = 1; i <= config.total; i++) {
+                const numero = String(i).padStart(2, '0');
+                imagensCertidao.push(`./imagem/${tipo}/${numero}.png`);
+            }
+    
+            const img = document.getElementById('slideImagem');
+            const titulo = document.getElementById('tituloCertidao');
+    
+            titulo.innerText = config.titulo;
+            img.onerror = () => {
+                console.error("Erro ao carregar imagem:", img.src);
+            };
+            img.src = imagensCertidao[0];
+    
+            document.getElementById('painelSlideCertidao').classList.add('show');
+    }
+}
+
 
 
 </script>
