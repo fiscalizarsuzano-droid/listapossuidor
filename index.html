@@ -372,6 +372,14 @@
         display: block;
         margin: auto;
         }
+        .descricao {
+        color: blue;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+        }
     </style>
 </head>
 <body>
@@ -716,7 +724,7 @@
                 <div id="g9" class="label">Comprovante de pagamento da TAXA DE EXPEDIENTE (emitida no momento da entrada do pedido)</div>
                 <div class="ctrl-right" onclick="riscarTexto('g9')">✕</div>
             </div>
-            <p>---------------------------------------------------------------------------------</p>
+            <p class="descricao">==============================================================================================</p>
             <div class="item">
                 <div class="ctrl-left" onclick="marcarTexto('g4')">✓</div>
                 <div id="g4" class="label">PROCURAÇÃO original com firma reconhecida e RG/CPF do procurador</div>
