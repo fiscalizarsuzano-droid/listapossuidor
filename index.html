@@ -782,9 +782,9 @@
             </div>
             <div class="nota">Cálculo: À vista 2% | Financiado: entrada 2% + saldo 0,5% | Prazo: 60 dias</div>
         </div>
-        <a href="ITBI.pdf" target="_blank" class="fab-btn">
-         📄 Manual ITBI
-        </a>
+        <button class="fab-btn" onclick="abrirPDFITBI(event)">
+            📄 Manual ITBI
+        </button>
     </section>
 </div>
 
@@ -1213,6 +1213,15 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
     
         const iframe = document.getElementById('iframePDF');
         iframe.src = 'manual-cadastro-imobiliario.pdf';
+    
+        document.getElementById('painelPDF').classList.add('show');
+    }
+    function abrirPDFITBI(event) {
+        event.stopPropagation();
+        fecharTodosPaineis();
+    
+        const iframe = document.getElementById('iframePDF');
+        iframe.src = 'ITBI.pdf'; // mesmo nível do index.html
     
         document.getElementById('painelPDF').classList.add('show');
     }
