@@ -783,6 +783,9 @@
             <div class="nota">Cálculo: À vista 2% | Financiado: entrada 2% + saldo 0,5% | Prazo: 60 dias</div>
         </div>
         <button class="fab-btn" onclick="abrirPDFITBI(event)">
+            📄 Guia ITBI
+        </button>
+        <button class="fab-btn" onclick="abrirPDFITBII(event)">
             📄 Manual ITBI
         </button>
     </section>
@@ -1236,7 +1239,15 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
     
         document.getElementById('painelPDF').classList.add('show');
     }
-
+    function abrirPDFITBII(event) {
+        event.stopPropagation();
+        fecharTodosPaineis();
+    
+        const iframe = document.getElementById('iframePDF');
+        iframe.src = 'Manual_ITBI.pdf'; // mesmo nível do index.html
+    
+        document.getElementById('painelPDF').classList.add('show');
+    }
                                                         // tentartiva de painel simplificado    
     function abrirPDFInfoExtra(nomePDF) {
         fecharTodosPaineis();
