@@ -381,6 +381,26 @@
         overflow: hidden;
         white-space: nowrap;
         }
+        /* ===== ITBI bloco de texto===== */        
+        .itbi-texto {
+        max-height: 280px;       /* controla o espaço na tela */
+        overflow-y: auto;        /* ativa rolagem */
+        font-size: 14px;
+        line-height: 1.5;
+        color: #333;
+        }
+        
+        .itbi-texto ul {
+            padding-left: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .itbi-texto hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 12px 0;
+        }
+
     </style>
 </head>
 <body>
@@ -754,33 +774,51 @@
     <section id="conteudo-ITBI" class="conteudo">
         <h2>ITBI</h2>
         <div class="card">
-            <div class="item">
-                <div class="ctrl-left" onclick="marcarTexto('itbi1')">✓</div>
-                <div id="itbi1" class="label">Contrato De Financiamento Emitido Pelo Banco</div>
-                <div class="ctrl-right" onclick="riscarTexto('itbi1')">✕</div>
+            <div class="itbi-texto">
+                <p><strong>Documentos aceitos:</strong></p>
+                <ul>
+                    <li>Escritura do imóvel</li>
+                    <li>Contrato de compra e venda do banco</li>
+                    <li>Certidão de compra e venda</li>
+                </ul>
+        
+                <p><strong>Relação de documentos necessários para emissão da guia de ITBI.</strong><br>
+                Para a emissão, basta enviar <strong>um</strong> dos documentos abaixo:</p>
+        
+                <ul>
+                    <li>Contrato de Financiamento Bancário / Consórcio</li>
+                    <li>Minuta / Escritura do Cartório de Notas</li>
+                    <li>Incorporação em pessoa jurídica: contrato social atualizado</li>
+                    <li>Carta de arrematação + matrícula</li>
+                    <li>Demais processos judiciais: petição inicial + decisão</li>
+                    <li>
+                        Consolidação de propriedade: ofício da instituição devidamente assinado,
+                        constando qualificação da instituição e do transmitente, bem como descrição
+                        completa do imóvel + matrícula
+                    </li>
+                </ul>
+        
+                <p><strong>Obs.:</strong> demais informações pertinentes como alteração do valor da causa,
+                informações do imóvel, entre outras.</p>
+        
+                <hr>
+        
+                <p><strong>Restituição de parcela já paga:</strong></p>
+                <p>É necessário solicitar presencialmente a restituição do valor em razão do cancelamento do parcelamento.</p>
+        
+                <ul>
+                    <li>Requerimento próprio descrevendo a solicitação e indicando agência e nº da conta</li>
+                    <li>Documento pessoal contendo CPF</li>
+                    <li>Comprovante de endereço</li>
+                    <li>Guia de ITBI (correspondente à parcela paga)</li>
+                    <li>Comprovante de pagamento da(s) parcela(s)</li>
+                </ul>
+        
+                <p><strong>Parcelamento:</strong><br>
+                Pode ser feito em até <strong>6 vezes sem juros</strong>.
+                O registro no Cartório de Imóveis somente será possível após o pagamento da última parcela.
+                </p>
             </div>
-        </div>
-        <div class="card">
-            <div class="item">
-                <div class="ctrl-left" onclick="marcarTexto('itbi2')">✓</div>
-                <div id="itbi2" class="label">Contrato Com Força De Escritura</div>
-                <div class="ctrl-right" onclick="riscarTexto('itbi2')">✕</div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="item">
-                <div class="ctrl-left" onclick="marcarTexto('itbi3')">✓</div>
-                <div id="itbi3" class="label">Escritura Pública</div>
-                <div class="ctrl-right" onclick="riscarTexto('itbi3')">✕</div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="item">
-                <div class="ctrl-left" onclick="marcarTexto('itbi4')">✓</div>
-                <div id="itbi4" class="label">Ação Judicial</div>
-                <div class="ctrl-right" onclick="riscarTexto('itbi4')">✕</div>
-            </div>
-            <div class="nota">Cálculo: À vista 2% | Financiado: entrada 2% + saldo 0,5% | Prazo: 60 dias</div>
         </div>
         <button class="fab-btn" onclick="abrirPDFITBI(event)">
             📄 Guia ITBI
