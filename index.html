@@ -1360,9 +1360,9 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
     
     /* Fantasma */
     document.addEventListener('keydown', e => {
-       if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
-          document.getElementById('ghostBtn').classList.toggle('show');
-       }
+        if (e.ctrlKey && e.key === '3') {
+            document.getElementById('ghostBtn').classList.toggle('show');
+        }
     });
     function abrirMenuApostilas() {
         window.open('vitrine.html', '_blank');
