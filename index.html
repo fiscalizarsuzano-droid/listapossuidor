@@ -405,20 +405,33 @@
         /* ===== Botão Fantasma===== */  
         #ghostBtn {
             position: fixed;
-            bottom: 20px;
+            bottom: 90px;
             left: 20px;
             opacity: 0;
             pointer-events: none;
-            transition: opacity .2s;
-            z-index: 9999;
+            transition: opacity .2s, transform .2s;
+            z-index: 20000;
+        
+            background: linear-gradient(135deg, #6a5acd, #00bcd4);
+            color: white;
+            border: none;
+            padding: 12px 18px;
+            border-radius: 999px;
+            font-weight: bold;
+            box-shadow: 0 6px 16px rgba(0,0,0,.25);
         }
+        
         #ghostBtn.show {
             opacity: 1;
             pointer-events: auto;
+            transform: translateY(-4px);
         }
 
     </style>
 </head>
+        <button id="ghostBtn" onclick="abrirMenuApostilas()">
+            📘 Apostilas
+        </button>
 <body>
 
 <!-- ===== MENU LATERAL ===== -->
@@ -474,9 +487,7 @@
             <div class="sub">Clique no quadrado à esquerda para marcar como entregue. Clique à direita para riscar e indicar falta.</div>
         </div>
         <button class="reset-btn" onclick="resetarChecklist()">Reiniciar Checklist</button>
-        <button id="ghostBtn" onclick="abrirMenuApostilas()">
-            📘 Apostilas
-        </button>
+
     </header>
 
     <!-- COMPROMISSÁRIO -->
@@ -1346,7 +1357,12 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
             fecharTodosPaineis();
         }
     });
-
+    /* Fantasma */
+    document.addEventListener('keydown', e => {
+       if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
+          document.getElementById('ghostBtn').classList.toggle('show');
+       }
+    });
     // ===== INICIALIZAÇÃO =====
     document.addEventListener('DOMContentLoaded', () => {
         abrirAba('compromissario');
@@ -1443,12 +1459,7 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
     }
 }
 
-    /* Fantasma */
-    document.addEventListener('keydown', e => {
-       if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
-          document.getElementById('ghostBtn').classList.toggle('show');
-       }
-    });
+
 
 
 </script>
