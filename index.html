@@ -474,6 +474,9 @@
             <div class="sub">Clique no quadrado à esquerda para marcar como entregue. Clique à direita para riscar e indicar falta.</div>
         </div>
         <button class="reset-btn" onclick="resetarChecklist()">Reiniciar Checklist</button>
+        <button id="ghostBtn" onclick="abrirMenuApostilas()">
+            📘 Apostilas
+        </button>
     </header>
 
     <!-- COMPROMISSÁRIO -->
@@ -841,9 +844,6 @@
         </button>
         <button class="fab-btn" onclick="abrirPDFITBII(event)">
             📄 Manual ITBI
-        </button>
-        <button id="ghostBtn" onclick="abrirMenuApostilas()">
-            📘 Apostilas
         </button>
     </section>
 </div>
@@ -1393,12 +1393,6 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
         fecharTodosPaineis();
         document.getElementById('painelCertidoes').classList.add('show');
     }
-    /* Fantasma */
-    document.addEventListener('keydown', e => {
-       if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
-          document.getElementById('ghostBtn').classList.toggle('show');
-       }
-    });
     
     /* Abrir slideshow */
     function abrirSlideCertidao(tipo) {
@@ -1449,6 +1443,12 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
     }
 }
 
+    /* Fantasma */
+    document.addEventListener('keydown', e => {
+       if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
+          document.getElementById('ghostBtn').classList.toggle('show');
+       }
+    });
 
 
 </script>
