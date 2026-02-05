@@ -429,11 +429,11 @@
 
     </style>
 </head>
-        <button id="ghostBtn" onclick="abrirMenuApostilas()">
-            📘 Apostilas
-        </button>
-<body>
 
+<body>
+<button id="ghostBtn" onclick="abrirMenuApostilas()">
+   📘 Apostilas
+</button>
 <!-- ===== MENU LATERAL ===== -->
 <div class="menu">
     <div class="menu-title">PROCEDIMENTOS</div>
@@ -1357,12 +1357,17 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
             fecharTodosPaineis();
         }
     });
+    
     /* Fantasma */
     document.addEventListener('keydown', e => {
        if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
           document.getElementById('ghostBtn').classList.toggle('show');
        }
     });
+    function abrirMenuApostilas() {
+        alert('Menu de apostilas (em construção)');
+    }
+    
     // ===== INICIALIZAÇÃO =====
     document.addEventListener('DOMContentLoaded', () => {
         abrirAba('compromissario');
