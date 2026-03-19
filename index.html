@@ -1466,12 +1466,21 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
             document.getElementById('painelSlideCertidao').classList.add('show');
     }
 }
-        // link prefeitura
+        // link revisão IPTU
 function abrirlink() {
     window.open("https://grp.suzano.sp.gov.br/portalcidadao/#78c3e513dd43cb27d8a3e2f376196ffc656d7ea577b2c6fb63f5b21fd592a6e22d8461445bd86f97c3571502fb5ff23ff62dbdb435d7c2fff3e63c2a29f916f34cb0ea68dc319eb7e357c8e0d4f4070424cd7f6c51bd7d8b5c69dde65b6bf999c7fdf0c3f0efa56a19c7c7142868660682c3fbc710db64fce46265b9a52aaf4532ee95dbb74110cceee3de1202e26a3b0e54560d30f46f6094a40e7d3fac69e35130863a6958b99b47e9e318ef94f19805065a24c9fd7e6e53ee437720826c19", "_blank");
 }
 
+function abrirevisao(event) {
+    event.stopPropagation(); // evita fechar o painel
 
+    fecharTodosPaineis();
+
+    const iframe = document.getElementById('iframePDF');
+    iframe.src = './pdfs/revisaoiptu.pdf'; // caminho correto
+
+    document.getElementById('painelPDF').classList.add('show');
+}
 
 
 </script>
