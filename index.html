@@ -883,6 +883,7 @@
         <button class="fab-btn" onclick="abrirCertidao()">📄 Certidão</button>
         <button class="fab-btn" onclick="abrirevisao(event)">📄 Revisão de IPTU</button>
         <button class="fab-btn" onclick="abridiv(event)">📄 Baixa de divida do Ano</button>
+        <button class="fab-btn" onclick="abriret(event)">📄 Retratação na acto</button>
         <button class="fab-btn" onclick="abrirlink()">📄 LINK PREFEITURA</button>
     </div>
 </div>
@@ -1497,6 +1498,16 @@ function abridiv(event) {
 
     const iframe = document.getElementById('iframePDF');
     iframe.src = './pdfs/div.pdf'; // caminho correto
+
+    document.getElementById('painelPDF').classList.add('show');
+}
+function abriret(event) {
+    event.stopPropagation(); // evita fechar o painel
+
+    fecharTodosPaineis();
+
+    const iframe = document.getElementById('iframePDF');
+    iframe.src = './pdfs/ret.pdf'; // caminho correto
 
     document.getElementById('painelPDF').classList.add('show');
 }
