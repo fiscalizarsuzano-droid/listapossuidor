@@ -1355,7 +1355,18 @@ document.getElementById('painelPDF').addEventListener('click', function(e) {
         document.getElementById('painelPDF').classList.remove('show');
     }
 
+        // valor venal
+    function abrirPDFValorVenal(event) {
+        event.stopPropagation();
+        fecharTodosPaineis();
+    
+        const iframe = document.getElementById('iframePDF');
+        iframe.src = './pdf/Valorvenalinformativo.pdf';
+    
+        document.getElementById('painelPDF').classList.add('show');
+    }
 
+    
                                     // Fechar painéis ao clicar fora
     document.addEventListener('click', (e) => {
         const paineis = document.querySelectorAll('.painel-flutuante');
